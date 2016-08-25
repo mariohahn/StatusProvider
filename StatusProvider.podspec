@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
     :git => 'https://github.com/mariohahn/StatusProvider.git',
     :tag => 'v1.0.0'
   }
-  s.source_files = 'StatusProvider/StatusProvider/StatusProvider/*.{swift}'
+  s.source_files = 'StatusProvider/StatusProvider/*.{swift}'
   s.requires_arc = true
 end
