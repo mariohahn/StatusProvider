@@ -14,18 +14,18 @@
 		F5EEEDDA1D6F1E1C002B9B36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5EEEDD81D6F1E1C002B9B36 /* LaunchScreen.storyboard */; };
 		F5EEEDE51D6F1E1D002B9B36 /* StatusProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDE41D6F1E1D002B9B36 /* StatusProviderTests.swift */; };
 		F5EEEDF01D6F1E1D002B9B36 /* StatusProviderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDEF1D6F1E1D002B9B36 /* StatusProviderUITests.swift */; };
-		F5EEEE021D6F1E43002B9B36 /* EmtyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDFE1D6F1E43002B9B36 /* EmtyStatusView.swift */; };
-		F5EEEE031D6F1E43002B9B36 /* EmtyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDFE1D6F1E43002B9B36 /* EmtyStatusView.swift */; };
-		F5EEEE041D6F1E43002B9B36 /* EmtyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDFE1D6F1E43002B9B36 /* EmtyStatusView.swift */; };
-		F5EEEE051D6F1E43002B9B36 /* ErrorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDFF1D6F1E43002B9B36 /* ErrorStatusView.swift */; };
-		F5EEEE061D6F1E43002B9B36 /* ErrorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDFF1D6F1E43002B9B36 /* ErrorStatusView.swift */; };
-		F5EEEE071D6F1E43002B9B36 /* ErrorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDFF1D6F1E43002B9B36 /* ErrorStatusView.swift */; };
-		F5EEEE081D6F1E43002B9B36 /* LoadingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE001D6F1E43002B9B36 /* LoadingStatusView.swift */; };
-		F5EEEE091D6F1E43002B9B36 /* LoadingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE001D6F1E43002B9B36 /* LoadingStatusView.swift */; };
-		F5EEEE0A1D6F1E43002B9B36 /* LoadingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE001D6F1E43002B9B36 /* LoadingStatusView.swift */; };
-		F5EEEE0B1D6F1E43002B9B36 /* StatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE011D6F1E43002B9B36 /* StatusProvider.swift */; };
-		F5EEEE0C1D6F1E43002B9B36 /* StatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE011D6F1E43002B9B36 /* StatusProvider.swift */; };
-		F5EEEE0D1D6F1E43002B9B36 /* StatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE011D6F1E43002B9B36 /* StatusProvider.swift */; };
+		F5EEEE121D6F2079002B9B36 /* EmtyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE0E1D6F2079002B9B36 /* EmtyStatusView.swift */; };
+		F5EEEE131D6F2079002B9B36 /* EmtyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE0E1D6F2079002B9B36 /* EmtyStatusView.swift */; };
+		F5EEEE141D6F2079002B9B36 /* EmtyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE0E1D6F2079002B9B36 /* EmtyStatusView.swift */; };
+		F5EEEE151D6F2079002B9B36 /* ErrorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE0F1D6F2079002B9B36 /* ErrorStatusView.swift */; };
+		F5EEEE161D6F2079002B9B36 /* ErrorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE0F1D6F2079002B9B36 /* ErrorStatusView.swift */; };
+		F5EEEE171D6F2079002B9B36 /* ErrorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE0F1D6F2079002B9B36 /* ErrorStatusView.swift */; };
+		F5EEEE181D6F2079002B9B36 /* LoadingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE101D6F2079002B9B36 /* LoadingStatusView.swift */; };
+		F5EEEE191D6F2079002B9B36 /* LoadingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE101D6F2079002B9B36 /* LoadingStatusView.swift */; };
+		F5EEEE1A1D6F2079002B9B36 /* LoadingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE101D6F2079002B9B36 /* LoadingStatusView.swift */; };
+		F5EEEE1B1D6F2079002B9B36 /* StatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE111D6F2079002B9B36 /* StatusProvider.swift */; };
+		F5EEEE1C1D6F2079002B9B36 /* StatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE111D6F2079002B9B36 /* StatusProvider.swift */; };
+		F5EEEE1D1D6F2079002B9B36 /* StatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEE111D6F2079002B9B36 /* StatusProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,10 +59,10 @@
 		F5EEEDEB1D6F1E1D002B9B36 /* StatusProviderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StatusProviderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5EEEDEF1D6F1E1D002B9B36 /* StatusProviderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusProviderUITests.swift; sourceTree = "<group>"; };
 		F5EEEDF11D6F1E1D002B9B36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5EEEDFE1D6F1E43002B9B36 /* EmtyStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmtyStatusView.swift; sourceTree = "<group>"; };
-		F5EEEDFF1D6F1E43002B9B36 /* ErrorStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorStatusView.swift; sourceTree = "<group>"; };
-		F5EEEE001D6F1E43002B9B36 /* LoadingStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingStatusView.swift; sourceTree = "<group>"; };
-		F5EEEE011D6F1E43002B9B36 /* StatusProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusProvider.swift; sourceTree = "<group>"; };
+		F5EEEE0E1D6F2079002B9B36 /* EmtyStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmtyStatusView.swift; path = StatusProvider/EmtyStatusView.swift; sourceTree = "<group>"; };
+		F5EEEE0F1D6F2079002B9B36 /* ErrorStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorStatusView.swift; path = StatusProvider/ErrorStatusView.swift; sourceTree = "<group>"; };
+		F5EEEE101D6F2079002B9B36 /* LoadingStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingStatusView.swift; path = StatusProvider/LoadingStatusView.swift; sourceTree = "<group>"; };
+		F5EEEE111D6F2079002B9B36 /* StatusProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusProvider.swift; path = StatusProvider/StatusProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,10 +145,10 @@
 		F5EEEDFD1D6F1E25002B9B36 /* StatusProvider */ = {
 			isa = PBXGroup;
 			children = (
-				F5EEEDFE1D6F1E43002B9B36 /* EmtyStatusView.swift */,
-				F5EEEDFF1D6F1E43002B9B36 /* ErrorStatusView.swift */,
-				F5EEEE001D6F1E43002B9B36 /* LoadingStatusView.swift */,
-				F5EEEE011D6F1E43002B9B36 /* StatusProvider.swift */,
+				F5EEEE0E1D6F2079002B9B36 /* EmtyStatusView.swift */,
+				F5EEEE0F1D6F2079002B9B36 /* ErrorStatusView.swift */,
+				F5EEEE101D6F2079002B9B36 /* LoadingStatusView.swift */,
+				F5EEEE111D6F2079002B9B36 /* StatusProvider.swift */,
 			);
 			name = StatusProvider;
 			sourceTree = "<group>";
@@ -285,10 +285,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5EEEDD21D6F1E1C002B9B36 /* ViewController.swift in Sources */,
-				F5EEEE081D6F1E43002B9B36 /* LoadingStatusView.swift in Sources */,
-				F5EEEE0B1D6F1E43002B9B36 /* StatusProvider.swift in Sources */,
-				F5EEEE051D6F1E43002B9B36 /* ErrorStatusView.swift in Sources */,
-				F5EEEE021D6F1E43002B9B36 /* EmtyStatusView.swift in Sources */,
+				F5EEEE181D6F2079002B9B36 /* LoadingStatusView.swift in Sources */,
+				F5EEEE1B1D6F2079002B9B36 /* StatusProvider.swift in Sources */,
+				F5EEEE151D6F2079002B9B36 /* ErrorStatusView.swift in Sources */,
+				F5EEEE121D6F2079002B9B36 /* EmtyStatusView.swift in Sources */,
 				F5EEEDD01D6F1E1C002B9B36 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,10 +298,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5EEEDE51D6F1E1D002B9B36 /* StatusProviderTests.swift in Sources */,
-				F5EEEE031D6F1E43002B9B36 /* EmtyStatusView.swift in Sources */,
-				F5EEEE061D6F1E43002B9B36 /* ErrorStatusView.swift in Sources */,
-				F5EEEE0C1D6F1E43002B9B36 /* StatusProvider.swift in Sources */,
-				F5EEEE091D6F1E43002B9B36 /* LoadingStatusView.swift in Sources */,
+				F5EEEE131D6F2079002B9B36 /* EmtyStatusView.swift in Sources */,
+				F5EEEE161D6F2079002B9B36 /* ErrorStatusView.swift in Sources */,
+				F5EEEE1C1D6F2079002B9B36 /* StatusProvider.swift in Sources */,
+				F5EEEE191D6F2079002B9B36 /* LoadingStatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,10 +310,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5EEEDF01D6F1E1D002B9B36 /* StatusProviderUITests.swift in Sources */,
-				F5EEEE041D6F1E43002B9B36 /* EmtyStatusView.swift in Sources */,
-				F5EEEE071D6F1E43002B9B36 /* ErrorStatusView.swift in Sources */,
-				F5EEEE0D1D6F1E43002B9B36 /* StatusProvider.swift in Sources */,
-				F5EEEE0A1D6F1E43002B9B36 /* LoadingStatusView.swift in Sources */,
+				F5EEEE141D6F2079002B9B36 /* EmtyStatusView.swift in Sources */,
+				F5EEEE171D6F2079002B9B36 /* ErrorStatusView.swift in Sources */,
+				F5EEEE1D1D6F2079002B9B36 /* StatusProvider.swift in Sources */,
+				F5EEEE1A1D6F2079002B9B36 /* LoadingStatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
