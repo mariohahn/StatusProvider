@@ -4,7 +4,7 @@ Protocol to handle initial Loadings, Emty Views and Error Handling in a ViewCont
 ## Podfile
 
 ```ruby
-pod 'MHVideoPhotoGallery'
+pod 'StatusProvider'
 ```
 
 ## Functions 
