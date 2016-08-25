@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class LoadingStatusView: UIView {
+public class LoadingStatusView: UIView {
     
-    enum LoadingStyle {
+    public enum LoadingStyle {
         case LabelWithActivty
         case Label
         case Activity
@@ -58,7 +58,7 @@ class LoadingStatusView: UIView {
         }
     }
     
-    convenience init(loadingStyle style: LoadingStyle){
+    public convenience init(loadingStyle style: LoadingStyle){
         self.init(frame:CGRectZero)
         
         loadingStyle = style
@@ -81,7 +81,7 @@ class LoadingStatusView: UIView {
             ])
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import StatusProvider
 
-
-extension UIViewController: StatusProvider{ }
+extension UIViewController: StatusProvider { }
 
 class ViewController: UIViewController {
 

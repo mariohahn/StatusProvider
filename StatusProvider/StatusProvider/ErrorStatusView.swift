@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class ErrorStatusView: UIView, ErrorStatusDisplaying {
+public class ErrorStatusView: UIView, ErrorStatusDisplaying {
     
-    var retry: (()->Void)? {
+    public var retry: (()->Void)? {
         didSet{
             guard let _ = retry else { return }
             
@@ -19,7 +19,7 @@ class ErrorStatusView: UIView, ErrorStatusDisplaying {
         }
     }
     
-    var error: NSError? {
+    public var error: NSError? {
         didSet{
             
             guard let error = error else { return }
@@ -75,7 +75,7 @@ class ErrorStatusView: UIView, ErrorStatusDisplaying {
             ])
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EmtyStatusView: UIView {
+public class EmtyStatusView: UIView {
     
     let emtyTitleLabel: UILabel = {
         $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
@@ -41,7 +41,7 @@ class EmtyStatusView: UIView {
         return $0
     }(UIStackView())
     
-    convenience init(title: String?, caption: String?, image: UIImage? = nil){
+    public convenience init(title: String?, caption: String?, image: UIImage? = nil){
         self.init(frame: CGRectZero)
         
         if let title = title where title.characters.count > 0 {
@@ -80,7 +80,7 @@ class EmtyStatusView: UIView {
             ])
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

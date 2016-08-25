@@ -1,0 +1,16 @@
+PODS:
+  - StatusProvider (1.0.0)
+
+DEPENDENCIES:
+  - StatusProvider (from `./`)
+
+EXTERNAL SOURCES:
+  StatusProvider:
+    :path: ./
+
+SPEC CHECKSUMS:
+  StatusProvider: 16611ef50405af6931aa5ebfda143de034509fb4
+
+PODFILE CHECKSUM: 42a87d35b460e636d788f3f265e44a474aacd134
+
+COCOAPODS: 1.0.1
