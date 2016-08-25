@@ -20,7 +20,7 @@ pod 'MHVideoPhotoGallery'
     }
 ```
 
-## Custome Status 
+## Custom Status 
 
 ```swift
 class MyCustomEmtyView: UIView { }
