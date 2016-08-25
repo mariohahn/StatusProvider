@@ -7,6 +7,53 @@ Protocol to handle initial Loadings, Emty Views and Error Handling in a ViewCont
 pod 'MHVideoPhotoGallery'
 ```
 
+## Functions 
+```swift
+    func show(statusType type: StatusProviderType)
+    func hide(statusType type: StatusProviderType)
+    
+    public enum StatusProviderType {
+        case Loading
+        case Error(error: NSError?, retry: (()->Void)?)
+        case Emty
+        case None
+    }
+```
+
+## Custome Status 
+
+```swift
+class MyCustomEmtyView: UIView { }
+class MyCustomLoadingView: UIView { }
+class MyCustomErrorView: UIView, ErrorStatusDisplaying {
+
+    var error: NSError?{
+        didSet{ /*do your Sh** */}
+    }
+    
+    var retry: (() -> Void)?{
+        didSet{ /*do your Sh** */}
+    }
+}
+
+extension YourViewController: StatusProvider {
+
+    var emptyView: UIView?{
+        return MyCustomEmtyView()
+    }
+    
+    var loadingView: UIView?{
+        return MyCustomLoadingView()
+    }
+    
+    var errorView: ErrorStatusDisplaying? {
+        return MyCustomErrorView()
+    }
+}
+
+```
+
+
 ## How to use? 
 ```swift
 extension YourViewController: StatusProvider { }
