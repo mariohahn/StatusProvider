@@ -8,11 +8,16 @@
 
 import UIKit
 
+
+extension UIViewController: StatusProvider{ }
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        show(statusType: .Loading)
+//        show(statusType: .Emty)
     }
 
     override func didReceiveMemoryWarning() {
