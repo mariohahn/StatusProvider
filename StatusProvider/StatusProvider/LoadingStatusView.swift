@@ -11,22 +11,26 @@ import UIKit
 
 public class LoadingStatusView: UIView {
     
-    public enum LoadingStyle {
-        case LabelWithActivty
+    public enum LoadingStatusStyle {
+        case LabelWithActivity
         case Label
         case Activity
     }
     
     let activityIndicatorView: UIActivityIndicatorView = {
         $0.startAnimating()
+        #if os(tvOS)
+        $0.activityIndicatorViewStyle = .WhiteLarge
+        #endif
         
         return $0
-    }(UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge))
+    }(UIActivityIndicatorView(activityIndicatorStyle: .Gray))
     
     let loadingLabel: UILabel = {
-        $0.text = "Lädt…"
+        $0.text = "Loading…"
         $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
-        $0.textColor = UIColor.whiteColor()
+        $0.textColor = UIColor.blackColor()
+        
         return $0
     }(UILabel())
     
@@ -38,7 +42,7 @@ public class LoadingStatusView: UIView {
         return $0
     }(UIStackView())
     
-    var loadingStyle: LoadingStyle = .LabelWithActivty{
+    var loadingStyle: LoadingStatusStyle = .LabelWithActivity{
         didSet{
             adaptLoadingStyle()
         }
@@ -49,7 +53,7 @@ public class LoadingStatusView: UIView {
         activityIndicatorView.hidden = false
         
         switch loadingStyle {
-        case .LabelWithActivty:
+        case .LabelWithActivity:
             break
         case .Label:
             activityIndicatorView.hidden = true
@@ -58,7 +62,7 @@ public class LoadingStatusView: UIView {
         }
     }
     
-    public convenience init(loadingStyle style: LoadingStyle){
+    public convenience init(loadingStyle style: LoadingStatusStyle){
         self.init(frame:CGRectZero)
         
         loadingStyle = style
@@ -78,10 +82,17 @@ public class LoadingStatusView: UIView {
             stackView.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
             stackView.topAnchor.constraintEqualToAnchor(topAnchor),
             stackView.bottomAnchor.constraintEqualToAnchor(bottomAnchor)
-            ])
+        ])
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override var tintColor: UIColor!{
+        didSet{
+            loadingLabel.textColor = tintColor
+            activityIndicatorView.color = tintColor
+        }
     }
 }

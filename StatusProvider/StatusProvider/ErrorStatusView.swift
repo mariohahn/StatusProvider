@@ -30,21 +30,22 @@ public class ErrorStatusView: UIView, ErrorStatusDisplaying {
     
     let errorTitleLabel: UILabel = {
         $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        $0.textColor = UIColor.whiteColor()
+        $0.textColor = UIColor.blackColor()
         $0.textAlignment = .Center
+        $0.text = "Error"
         
         return $0
     }(UILabel())
     
     let errorDescriptionLabel: UILabel = {
         $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
-        $0.textColor = UIColor.whiteColor()
+        $0.textColor = UIColor.blackColor()
         
         return $0
     }(UILabel())
     
     let errorActionButton: UIButton = {
-        $0.setTitle("Wiederholen", forState: .Normal)
+        $0.setTitle("Retry", forState: .Normal)
         $0.hidden = true
         
         return $0
@@ -61,6 +62,8 @@ public class ErrorStatusView: UIView, ErrorStatusDisplaying {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        errorActionButton.addTarget(self, action: #selector(ErrorStatusView.errorButtonAction), forControlEvents: .PrimaryActionTriggered)
+        
         addSubview(stackView)
         
         stackView.addArrangedSubview(errorTitleLabel)
@@ -72,7 +75,18 @@ public class ErrorStatusView: UIView, ErrorStatusDisplaying {
             stackView.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
             stackView.topAnchor.constraintEqualToAnchor(topAnchor),
             stackView.bottomAnchor.constraintEqualToAnchor(bottomAnchor)
-            ])
+        ])
+    }
+    
+    func errorButtonAction() {
+        retry?()
+    }
+    
+    public override var tintColor: UIColor!{
+        didSet{
+            errorTitleLabel.textColor = tintColor
+            errorDescriptionLabel.textColor = tintColor
+        }
     }
     
     required public init?(coder aDecoder: NSCoder) {

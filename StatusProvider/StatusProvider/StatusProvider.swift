@@ -21,7 +21,7 @@ public enum StatusProviderType {
     
     case Loading
     case Error(error: NSError?, retry: (()->Void)?)
-    case Emty
+    case Emty(action: (()->Void)?)
     case None
     
     static func allViewTags() -> [Int]{
@@ -32,7 +32,7 @@ public enum StatusProviderType {
         switch self {
         case .Loading:    return  Constants.loadingTag
         case .Error(_,_): return  Constants.errorTag
-        case .Emty:       return  Constants.emtyTag
+        case .Emty(_):    return  Constants.emtyTag
         case .None:       return  Constants.noneTag
         }
     }
@@ -41,7 +41,7 @@ public enum StatusProviderType {
 func == (lhs: StatusProviderType, rhs: StatusProviderType) -> Bool {
     switch (lhs, rhs) {
         case (.Loading, .Loading): return true
-        case (.Emty, .Emty): return true
+        case (.Emty(_), .Emty(_)): return true
         case (.None, .None): return true
         case let (.Error(error1, _), .Error(error2, _)) where error1 == error2:  return true
         default: return false
@@ -56,7 +56,7 @@ public protocol StatusProvider: StatusOnViewProvider {
     
     var loadingView: UIView?                    { get }
     var errorView: ErrorStatusDisplaying?       { get }
-    var emptyView: UIView?                      { get }
+    var emptyView: EmtyStatusDisplaying?        { get }
 
     func show(statusType type: StatusProviderType)
     func hide(statusType type: StatusProviderType)
@@ -83,10 +83,15 @@ extension StatusOnViewProvider where Self: UIView {
     }
 }
 
+public protocol EmtyStatusDisplaying: class {
+    
+    var action: (()->Void)?         { set get }
+}
+
 public protocol ErrorStatusDisplaying: class {
     
     var error: NSError?             { set get }
-    var retry: (()->Void)?     { set get }
+    var retry: (()->Void)?          { set get }
 }
 
 extension StatusProvider{
@@ -97,7 +102,7 @@ extension StatusProvider{
             #if os(tvOS)
                 return LoadingStatusView(loadingStyle: .Activity)
             #elseif os(iOS)
-                return LoadingStatusView(loadingStyle: .LabelWithActivty)
+                return LoadingStatusView(loadingStyle: .LabelWithActivity)
             #else
                 return nil
             #endif
@@ -108,7 +113,7 @@ extension StatusProvider{
         get { return ErrorStatusView() }
     }
     
-    public var emptyView: UIView? {
+    public var emptyView: EmtyStatusDisplaying? {
         get { return nil }
     }
     
@@ -134,7 +139,11 @@ extension StatusProvider{
             (statusView as? ErrorStatusDisplaying)?.retry = retry
             
         case .Loading: statusView = loadingView
-        case .Emty:  statusView = emptyView
+        case let .Emty(action):
+            
+            statusView = emptyView as? UIView
+            (statusView as? EmtyStatusDisplaying)?.action = action
+            
         case .None: break
         }
         
