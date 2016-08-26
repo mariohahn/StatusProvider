@@ -1,4 +1,7 @@
 # StatusProvider
+
+![Screenshot](https://github.com/mariohahn/StatusProvider/blob/master/Github%20Screenshots/StatusProvider.png?raw=true)
+
 Protocol to handle initial Loadings, Emty Views and Error Handling in a ViewController &amp; views
 
 ## Podfile
@@ -15,7 +18,7 @@ pod 'StatusProvider'
     public enum StatusProviderType {
         case Loading
         case Error(error: NSError?, retry: (()->Void)?)
-        case Emty
+        case Empty(action: (()->Void)?)
         case None
     }
 ```
@@ -23,7 +26,7 @@ pod 'StatusProvider'
 ## Custom Status Views 
 
 ```swift
-class MyCustomEmtyView: UIView { }
+class MyCustomEmptyView: UIView { }
 class MyCustomLoadingView: UIView { }
 class MyCustomErrorView: UIView, ErrorStatusDisplaying {
 
