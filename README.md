@@ -18,7 +18,7 @@ pod 'StatusProvider'
     public enum StatusProviderType {
         case Loading
         case Error(error: NSError?, retry: (()->Void)?)
-        case Emty(action: (()->Void)?)
+        case Empty(action: (()->Void)?)
         case None
     }
 ```
@@ -26,7 +26,7 @@ pod 'StatusProvider'
 ## Custom Status Views 
 
 ```swift
-class MyCustomEmtyView: UIView { }
+class MyCustomEmptyView: UIView { }
 class MyCustomLoadingView: UIView { }
 class MyCustomErrorView: UIView, ErrorStatusDisplaying {
 
