@@ -47,7 +47,9 @@ class ActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        title = "Loading"
+        
         show(statusType: .Loading)
     }
 }

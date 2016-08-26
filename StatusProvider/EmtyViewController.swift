@@ -23,6 +23,8 @@ class EmtyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Emty"
+        
         show(statusType: StatusProviderType.Emty(action: { 
             self.show(statusType: .Loading)
         }))

@@ -28,7 +28,7 @@ public class LoadingStatusView: UIView {
     
     let loadingLabel: UILabel = {
         $0.text = "Loading…"
-        $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
+        $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
         $0.textColor = UIColor.blackColor()
         
         return $0

@@ -19,6 +19,8 @@ class ErrorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Error"
+        
         let error = NSError(domain: "my.domain", code: 405, userInfo: [NSLocalizedDescriptionKey : "Oh... fu**"])
         
         show(statusType: .Error(error: error, retry: {
