@@ -18,7 +18,7 @@ pod 'StatusProvider'
     public enum StatusProviderType {
         case Loading
         case Error(error: NSError?, retry: (()->Void)?)
-        case Emty
+        case Emty(action: (()->Void)?)
         case None
     }
 ```
