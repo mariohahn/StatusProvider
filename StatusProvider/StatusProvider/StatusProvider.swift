@@ -1,9 +1,7 @@
 //
 //  StatusProvider.swift
-//  3MobileTV
 //
 //  Created by MarioHahn on 23/08/16.
-//  Copyright © 2016 Hutchison Drei Austria GmbH. All rights reserved.
 //
 
 import Foundation
@@ -21,7 +19,7 @@ public enum StatusProviderType {
     
     case Loading
     case Error(error: NSError?, retry: (()->Void)?)
-    case Emty(action: (()->Void)?)
+    case Empty(action: (()->Void)?)
     case None
     
     static func allViewTags() -> [Int]{
@@ -32,7 +30,7 @@ public enum StatusProviderType {
         switch self {
         case .Loading:    return  Constants.loadingTag
         case .Error(_,_): return  Constants.errorTag
-        case .Emty(_):    return  Constants.emtyTag
+        case .Empty(_):    return  Constants.emtyTag
         case .None:       return  Constants.noneTag
         }
     }
@@ -41,7 +39,7 @@ public enum StatusProviderType {
 func == (lhs: StatusProviderType, rhs: StatusProviderType) -> Bool {
     switch (lhs, rhs) {
         case (.Loading, .Loading): return true
-        case (.Emty(_), .Emty(_)): return true
+        case (.Empty(_), .Empty(_)): return true
         case (.None, .None): return true
         case let (.Error(error1, _), .Error(error2, _)) where error1 == error2:  return true
         default: return false
@@ -56,7 +54,7 @@ public protocol StatusProvider: StatusOnViewProvider {
     
     var loadingView: UIView?                    { get }
     var errorView: ErrorStatusDisplaying?       { get }
-    var emptyView: EmtyStatusDisplaying?        { get }
+    var emptyView: EmptyStatusDisplaying?        { get }
 
     func show(statusType type: StatusProviderType)
     func hide(statusType type: StatusProviderType)
@@ -83,7 +81,7 @@ extension StatusOnViewProvider where Self: UIView {
     }
 }
 
-public protocol EmtyStatusDisplaying: class {
+public protocol EmptyStatusDisplaying: class {
     
     var action: (()->Void)?         { set get }
 }
@@ -113,7 +111,7 @@ extension StatusProvider{
         get { return ErrorStatusView() }
     }
     
-    public var emptyView: EmtyStatusDisplaying? {
+    public var emptyView: EmptyStatusDisplaying? {
         get { return nil }
     }
     
@@ -139,10 +137,10 @@ extension StatusProvider{
             (statusView as? ErrorStatusDisplaying)?.retry = retry
             
         case .Loading: statusView = loadingView
-        case let .Emty(action):
+        case let .Empty(action):
             
             statusView = emptyView as? UIView
-            (statusView as? EmtyStatusDisplaying)?.action = action
+            (statusView as? EmptyStatusDisplaying)?.action = action
             
         case .None: break
         }

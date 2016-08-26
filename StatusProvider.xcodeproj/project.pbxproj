@@ -10,7 +10,7 @@
 		0CC404FCF3A4EDE7E7078F47 /* Pods_StatusProviderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721BECAB979B7A1C577F460F /* Pods_StatusProviderUITests.framework */; };
 		9A52EE7096AB137DFCC93727 /* Pods_StatusProviderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C69EF34831EABD8EAD5D29 /* Pods_StatusProviderTests.framework */; };
 		F50344D21D70379700B91343 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50344D11D70379700B91343 /* ActivityViewController.swift */; };
-		F50344D41D7037A100B91343 /* EmtyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50344D31D7037A100B91343 /* EmtyViewController.swift */; };
+		F50344D41D7037A100B91343 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50344D31D7037A100B91343 /* EmptyViewController.swift */; };
 		F50344D61D7037D300B91343 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50344D51D7037D300B91343 /* ErrorViewController.swift */; };
 		F5EEEDD01D6F1E1C002B9B36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDCF1D6F1E1C002B9B36 /* AppDelegate.swift */; };
 		F5EEEDD21D6F1E1C002B9B36 /* YourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEEDD11D6F1E1C002B9B36 /* YourViewController.swift */; };
@@ -50,7 +50,7 @@
 		E3BBDA8E1C4EDC01AAFC5729 /* Pods-StatusProvider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatusProvider.release.xcconfig"; path = "Pods/Target Support Files/Pods-StatusProvider/Pods-StatusProvider.release.xcconfig"; sourceTree = "<group>"; };
 		F4D3EFD90F17CF76A63C6725 /* Pods-StatusProviderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatusProviderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StatusProviderUITests/Pods-StatusProviderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F50344D11D70379700B91343 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
-		F50344D31D7037A100B91343 /* EmtyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmtyViewController.swift; sourceTree = "<group>"; };
+		F50344D31D7037A100B91343 /* EmptyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 		F50344D51D7037D300B91343 /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		F5EEEDCC1D6F1E1C002B9B36 /* StatusProvider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatusProvider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5EEEDCF1D6F1E1C002B9B36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 				F5EEEDD11D6F1E1C002B9B36 /* YourViewController.swift */,
 				F50344D51D7037D300B91343 /* ErrorViewController.swift */,
 				F50344D11D70379700B91343 /* ActivityViewController.swift */,
-				F50344D31D7037A100B91343 /* EmtyViewController.swift */,
+				F50344D31D7037A100B91343 /* EmptyViewController.swift */,
 				F5EEEDD31D6F1E1C002B9B36 /* Main.storyboard */,
 				F5EEEDD61D6F1E1C002B9B36 /* Assets.xcassets */,
 				F5EEEDD81D6F1E1C002B9B36 /* LaunchScreen.storyboard */,
@@ -437,7 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5EEEDD21D6F1E1C002B9B36 /* YourViewController.swift in Sources */,
-				F50344D41D7037A100B91343 /* EmtyViewController.swift in Sources */,
+				F50344D41D7037A100B91343 /* EmptyViewController.swift in Sources */,
 				F50344D61D7037D300B91343 /* ErrorViewController.swift in Sources */,
 				F50344D21D70379700B91343 /* ActivityViewController.swift in Sources */,
 				F5EEEDD01D6F1E1C002B9B36 /* AppDelegate.swift in Sources */,

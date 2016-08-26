@@ -1,15 +1,13 @@
 //
-//  EmtyStatusView.swift
-//  3MobileTV
+//  EmptyStatusView
 //
 //  Created by MarioHahn on 25/08/16.
-//  Copyright © 2016 Hutchison Drei Austria GmbH. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-public class EmtyStatusView: UIView, EmtyStatusDisplaying {
+public class EmptyStatusView: UIView, EmptyStatusDisplaying {
     
     public var action: (() -> Void)?{
         didSet{
@@ -58,7 +56,7 @@ public class EmtyStatusView: UIView, EmtyStatusDisplaying {
     public convenience init(title: String?, caption: String?, image: UIImage? = nil, actionTitle: String? = nil){
         self.init(frame: CGRectZero)
         
-        emtyActionButton.addTarget(self, action: #selector(EmtyStatusView.emtyButtonAction), forControlEvents: .PrimaryActionTriggered)
+        emtyActionButton.addTarget(self, action: #selector(EmptyStatusView.emtyButtonAction), forControlEvents: .PrimaryActionTriggered)
         
         if let title = title where title.characters.count > 0 {
             emtyTitleLabel.text = title
