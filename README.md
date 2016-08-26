@@ -1,4 +1,7 @@
 # StatusProvider
+
+![Screenshot](https://github.com/mariohahn/StatusProvider/blob/master/Github%20Screenshots/StatusProvider.png?raw=true)
+
 Protocol to handle initial Loadings, Emty Views and Error Handling in a ViewController &amp; views
 
 ## Podfile
