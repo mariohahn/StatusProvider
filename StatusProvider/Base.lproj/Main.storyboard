@@ -98,7 +98,7 @@
         <!--Emty-->
         <scene sceneID="Fua-CI-rEy">
             <objects>
-                <viewController id="Lc1-Fr-96H" customClass="EmtyViewController" customModule="StatusProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Lc1-Fr-96H" customClass="EmptyViewController" customModule="StatusProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b6k-2h-swe"/>
                         <viewControllerLayoutGuide type="bottom" id="Oaj-Uh-plo"/>
