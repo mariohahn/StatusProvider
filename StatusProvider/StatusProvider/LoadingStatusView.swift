@@ -19,12 +19,11 @@ public class LoadingStatusView: UIView {
     
     let activityIndicatorView: UIActivityIndicatorView = {
         $0.startAnimating()
-        #if os(tvOS)
-        $0.activityIndicatorViewStyle = .WhiteLarge
+        #if os(iOS)
+        $0.activityIndicatorViewStyle = .Gray
         #endif
-        
         return $0
-    }(UIActivityIndicatorView(activityIndicatorStyle: .Gray))
+    }(UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge))
     
     let loadingLabel: UILabel = {
         $0.text = "Loading…"
@@ -71,6 +70,7 @@ public class LoadingStatusView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         
         addSubview(stackView)
         
