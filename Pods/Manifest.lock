@@ -1,5 +1,5 @@
 PODS:
-  - StatusProvider (1.0.0)
+  - StatusProvider (1.0.2)
 
 DEPENDENCIES:
   - StatusProvider (from `./`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ./
 
 SPEC CHECKSUMS:
-  StatusProvider: 16611ef50405af6931aa5ebfda143de034509fb4
+  StatusProvider: 67ca34511c25b9b493c41d744517c049ab0369b5
 
 PODFILE CHECKSUM: 42a87d35b460e636d788f3f265e44a474aacd134
 

@@ -1,6 +1,6 @@
 {
   "name": "StatusProvider",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "homepage": "https://github.com/mariohahn/StatusProvider",
   "authors": {
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/mariohahn/StatusProvider.git",
-    "tag": "v1.0.0"
+    "tag": "v1.0.2"
   },
   "source_files": "StatusProvider/StatusProvider/*.{swift}",
   "requires_arc": true
