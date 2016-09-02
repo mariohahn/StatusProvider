@@ -4,7 +4,7 @@
 
 Protocol to handle initial Loadings, Empty Views and Error Handling in a ViewController &amp; views
 
-## Podfile
+## CocoaPods Podfile
 
 ```ruby
 pod 'StatusProvider'
