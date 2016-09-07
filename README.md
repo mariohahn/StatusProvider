@@ -4,13 +4,19 @@
 
 Protocol to handle initial Loadings, Empty Views and Error Handling in a ViewController &amp; views
 
-## Podfile
+## CocoaPods Podfile
 
 ```ruby
 pod 'StatusProvider'
 ```
 
 ## Functions 
+
+* Loading
+* EmptyView 
+* Error Handling 
+
+
 ```swift
     func show(statusType type: StatusProviderType)
     func hide(statusType type: StatusProviderType)
@@ -21,6 +27,34 @@ pod 'StatusProvider'
         case Empty(action: (()->Void)?)
         case None
     }
+```
+
+## How to use? 
+```swift
+extension YourViewController: StatusProvider { }
+
+class YourViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadDataAsynchron()
+    }
+    
+    func loadDataAsynchron() {
+        
+        show(statusType: .Loading)
+        
+        dispatch_after(dispatch_time( DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))),dispatch_get_main_queue()){
+            
+            let error = NSError(domain: "my.domain", code: 405, userInfo: [NSLocalizedDescriptionKey : "Oh... fu**"])
+            
+            self.show(statusType: StatusProviderType.Error(error: error, retry: {
+                self.loadDataAsynchron()
+            }))
+        }
+    }
+}
 ```
 
 ## Custom Status Views 
@@ -56,31 +90,3 @@ extension YourViewController: StatusProvider {
 
 ```
 
-
-## How to use? 
-```swift
-extension YourViewController: StatusProvider { }
-
-class YourViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        loadDataAsynchron()
-    }
-    
-    func loadDataAsynchron() {
-        
-        show(statusType: .Loading)
-        
-        dispatch_after(dispatch_time( DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))),dispatch_get_main_queue()){
-            
-            let error = NSError(domain: "my.domain", code: 405, userInfo: [NSLocalizedDescriptionKey : "Oh... fu**"])
-            
-            self.show(statusType: StatusProviderType.Error(error: error, retry: {
-                self.loadDataAsynchron()
-            }))
-        }
-    }
-}
-```
