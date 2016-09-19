@@ -23,8 +23,8 @@ class ErrorViewController: UIViewController {
         
         let error = NSError(domain: "my.domain", code: 405, userInfo: [NSLocalizedDescriptionKey : "Oh... fu**"])
         
-        show(statusType: .Error(error: error, retry: {
-            self.show(statusType: .Loading)
+        show(statusType: .error(error: error, retry: {
+            self.show(statusType: .loading)
         }))
     }
 }

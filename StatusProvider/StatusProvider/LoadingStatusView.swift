@@ -9,62 +9,62 @@
 import Foundation
 import UIKit
 
-public class LoadingStatusView: UIView {
+open class LoadingStatusView: UIView {
 	
 	public enum LoadingStatusStyle {
-		case LabelWithActivity
-		case Label
-		case Activity
+		case labelWithActivity
+		case label
+		case activity
 	}
 	
-	public let activityIndicatorView: UIActivityIndicatorView = {
+	open let activityIndicatorView: UIActivityIndicatorView = {
 		$0.startAnimating()
 		#if os(tvOS)
 			$0.activityIndicatorViewStyle = .WhiteLarge
 		#elseif os(iOS)
-			$0.activityIndicatorViewStyle = .Gray
+			$0.activityIndicatorViewStyle = .gray
 		#endif
 		return $0
-	}(UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge))
+	}(UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge))
 	
-	public let loadingLabel: UILabel = {
+	open let loadingLabel: UILabel = {
 		$0.text = "Loading…"
-		$0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
-		$0.textColor = UIColor.blackColor()
+		$0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
+		$0.textColor = UIColor.black
 		
 		return $0
 	}(UILabel())
 	
 	let stackView: UIStackView = {
 		$0.translatesAutoresizingMaskIntoConstraints = false
-		$0.axis = .Horizontal
+		$0.axis = .horizontal
 		$0.spacing = 10
 		
 		return $0
 	}(UIStackView())
 	
-	var loadingStyle: LoadingStatusStyle = .LabelWithActivity {
+	var loadingStyle: LoadingStatusStyle = .labelWithActivity {
 		didSet {
 			adaptLoadingStyle()
 		}
 	}
 	
 	func adaptLoadingStyle() {
-		loadingLabel.hidden = false
-		activityIndicatorView.hidden = false
+		loadingLabel.isHidden = false
+		activityIndicatorView.isHidden = false
 		
 		switch loadingStyle {
-		case .LabelWithActivity:
+		case .labelWithActivity:
 			break
-		case .Label:
-			activityIndicatorView.hidden = true
-		case .Activity:
-			loadingLabel.hidden = true
+		case .label:
+			activityIndicatorView.isHidden = true
+		case .activity:
+			loadingLabel.isHidden = true
 		}
 	}
 	
 	public convenience init(loadingStyle style: LoadingStatusStyle) {
-		self.init(frame: CGRectZero)
+		self.init(frame: CGRect.zero)
 		
 		loadingStyle = style
 		adaptLoadingStyle()
@@ -78,11 +78,11 @@ public class LoadingStatusView: UIView {
 		stackView.addArrangedSubview(activityIndicatorView)
 		stackView.addArrangedSubview(loadingLabel)
 		
-		NSLayoutConstraint.activateConstraints([
-			stackView.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
-			stackView.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
-			stackView.topAnchor.constraintEqualToAnchor(topAnchor),
-			stackView.bottomAnchor.constraintEqualToAnchor(bottomAnchor)
+		NSLayoutConstraint.activate([
+			stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			stackView.topAnchor.constraint(equalTo: topAnchor),
+			stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
 	}
 	
@@ -90,7 +90,7 @@ public class LoadingStatusView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	public override var tintColor: UIColor! {
+	open override var tintColor: UIColor! {
 		didSet {
 			loadingLabel.textColor = tintColor
 			activityIndicatorView.color = tintColor

@@ -47,20 +47,22 @@ class YourViewController: UIViewController {
     
     func loadDataAsynchron() {
         
-        show(statusType: .Loading)
+        show(statusType: .loading)
         
-        dispatch_after(dispatch_time( DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))),dispatch_get_main_queue()){
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(2.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)){
             
             let error = NSError(domain: "my.domain", code: 405, userInfo: [NSLocalizedDescriptionKey : "Oh... fu**"])
             
-            self.show(statusType: StatusProviderType.Error(error: error, retry: {
+            self.show(statusType: StatusProviderType.error(error: error, retry: {
                 self.loadDataAsynchron()
             }))
         }
     }
+    
 }
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
 
 
 }

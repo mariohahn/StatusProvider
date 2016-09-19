@@ -7,17 +7,17 @@
 import Foundation
 import UIKit
 
-public class ErrorStatusView: UIView, ErrorStatusDisplaying {
+open class ErrorStatusView: UIView, ErrorStatusDisplaying {
 	
-	public var retry: (() -> Void)? {
+	open var retry: (() -> Void)? {
 		didSet {
 			guard let _ = retry else { return }
 			
-			errorActionButton.hidden = false
+			errorActionButton.isHidden = false
 		}
 	}
 	
-	public var error: NSError? {
+	open var error: NSError? {
 		didSet {
 			
 			guard let error = error else { return }
@@ -26,32 +26,32 @@ public class ErrorStatusView: UIView, ErrorStatusDisplaying {
 		}
 	}
 	
-	public let errorTitleLabel: UILabel = {
-		$0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-		$0.textColor = UIColor.blackColor()
-		$0.textAlignment = .Center
+	open let errorTitleLabel: UILabel = {
+		$0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+		$0.textColor = UIColor.black
+		$0.textAlignment = .center
 		$0.text = "Error"
 		
 		return $0
 	}(UILabel())
 	
-	public let errorDescriptionLabel: UILabel = {
-		$0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
-		$0.textColor = UIColor.blackColor()
+	open let errorDescriptionLabel: UILabel = {
+		$0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
+		$0.textColor = UIColor.black
 		
 		return $0
 	}(UILabel())
 	
-	public let errorActionButton: UIButton = {
-		$0.setTitle("Retry", forState: .Normal)
-		$0.hidden = true
+	open let errorActionButton: UIButton = {
+		$0.setTitle("Retry", for: .normal)
+		$0.isHidden = true
 		
 		return $0
-	}(UIButton(type: UIButtonType.System))
+	}(UIButton(type: UIButtonType.system))
 	
 	let stackView: UIStackView = {
 		$0.translatesAutoresizingMaskIntoConstraints = false
-		$0.axis = .Vertical
+		$0.axis = .vertical
 		$0.spacing = 10
 		
 		return $0
@@ -60,7 +60,7 @@ public class ErrorStatusView: UIView, ErrorStatusDisplaying {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
-		errorActionButton.addTarget(self, action: #selector(ErrorStatusView.errorButtonAction), forControlEvents: .PrimaryActionTriggered)
+		errorActionButton.addTarget(self, action: #selector(ErrorStatusView.errorButtonAction), for: .primaryActionTriggered)
 		
 		addSubview(stackView)
 		
@@ -68,11 +68,11 @@ public class ErrorStatusView: UIView, ErrorStatusDisplaying {
 		stackView.addArrangedSubview(errorDescriptionLabel)
 		stackView.addArrangedSubview(errorActionButton)
 		
-		NSLayoutConstraint.activateConstraints([
-			stackView.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
-			stackView.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
-			stackView.topAnchor.constraintEqualToAnchor(topAnchor),
-			stackView.bottomAnchor.constraintEqualToAnchor(bottomAnchor)
+		NSLayoutConstraint.activate([
+			stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			stackView.topAnchor.constraint(equalTo: topAnchor),
+			stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
 	}
 	
@@ -80,7 +80,7 @@ public class ErrorStatusView: UIView, ErrorStatusDisplaying {
 		retry?()
 	}
 	
-	public override var tintColor: UIColor! {
+	open override var tintColor: UIColor! {
 		didSet {
 			errorTitleLabel.textColor = tintColor
 			errorDescriptionLabel.textColor = tintColor

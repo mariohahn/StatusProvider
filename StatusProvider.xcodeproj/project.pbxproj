@@ -250,13 +250,16 @@
 				TargetAttributes = {
 					F5EEEDCB1D6F1E1C002B9B36 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					F5EEEDDF1D6F1E1D002B9B36 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = F5EEEDCB1D6F1E1C002B9B36;
 					};
 					F5EEEDEA1D6F1E1D002B9B36 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = F5EEEDCB1D6F1E1C002B9B36;
 					};
 				};
@@ -590,6 +593,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = at.drei.StatusProvider;
 				PRODUCT_MODULE_NAME = StatusProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -603,6 +607,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = at.drei.StatusProvider;
 				PRODUCT_MODULE_NAME = StatusProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -615,6 +620,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.drei.StatusProviderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StatusProvider.app/StatusProvider";
 			};
 			name = Debug;
@@ -628,6 +634,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.drei.StatusProviderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StatusProvider.app/StatusProvider";
 			};
 			name = Release;
@@ -640,6 +647,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.drei.StatusProviderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = StatusProvider;
 			};
 			name = Debug;
@@ -652,6 +660,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.drei.StatusProviderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = StatusProvider;
 			};
 			name = Release;

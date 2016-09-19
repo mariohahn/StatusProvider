@@ -25,8 +25,8 @@ class EmptyViewController: UIViewController {
         
         title = "Empty"
         
-        show(statusType: StatusProviderType.Empty(action: {
-            self.show(statusType: .Loading)
+        show(statusType: StatusProviderType.empty(action: {
+            self.show(statusType: .loading)
         }))
     }
     

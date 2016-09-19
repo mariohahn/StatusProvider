@@ -17,10 +17,10 @@ public enum StatusProviderType {
         static let noneTag      = 7026
     }
     
-    case Loading
-    case Error(error: NSError?, retry: (()->Void)?)
-    case Empty(action: (()->Void)?)
-    case None
+    case loading
+    case error(error: NSError?, retry: (()->Void)?)
+    case empty(action: (()->Void)?)
+    case none
     
     static func allViewTags() -> [Int]{
         return [ Constants.loadingTag,Constants.errorTag,Constants.emtyTag,Constants.noneTag]
@@ -28,20 +28,20 @@ public enum StatusProviderType {
     
     func viewTag() -> Int{
         switch self {
-        case .Loading:    return  Constants.loadingTag
-        case .Error(_,_): return  Constants.errorTag
-        case .Empty(_):    return  Constants.emtyTag
-        case .None:       return  Constants.noneTag
+        case .loading:    return  Constants.loadingTag
+        case .error(_,_): return  Constants.errorTag
+        case .empty(_):    return  Constants.emtyTag
+        case .none:       return  Constants.noneTag
         }
     }
 }
 
 func == (lhs: StatusProviderType, rhs: StatusProviderType) -> Bool {
     switch (lhs, rhs) {
-        case (.Loading, .Loading): return true
-        case (.Empty(_), .Empty(_)): return true
-        case (.None, .None): return true
-        case let (.Error(error1, _), .Error(error2, _)) where error1 == error2:  return true
+        case (.loading, .loading): return true
+        case (.empty(_), .empty(_)): return true
+        case (.none, .none): return true
+        case let (.error(error1, _), .error(error2, _)) where error1 == error2:  return true
         default: return false
     }
 }
@@ -100,7 +100,7 @@ extension StatusProvider{
             #if os(tvOS)
                 return LoadingStatusView(loadingStyle: .Activity)
             #elseif os(iOS)
-                return LoadingStatusView(loadingStyle: .LabelWithActivity)
+                return LoadingStatusView(loadingStyle: .labelWithActivity)
             #else
                 return nil
             #endif
@@ -130,26 +130,26 @@ extension StatusProvider{
         var statusView: UIView? = nil
         
         switch type {
-        case let .Error(error,retry):
+        case let .error(error,retry):
             
             statusView = errorView as? UIView
             (statusView as? ErrorStatusDisplaying)?.error = error
             (statusView as? ErrorStatusDisplaying)?.retry = retry
             
-        case .Loading: statusView = loadingView
-        case let .Empty(action):
+        case .loading: statusView = loadingView
+        case let .empty(action):
             
             statusView = emptyView as? UIView
             (statusView as? EmptyStatusDisplaying)?.action = action
             
-        case .None: break
+        case .none: break
         }
         
         statusView?.tag = type.viewTag()
         addViewAndCenterConstraints(statusView)
     }
     
-    private func addViewAndCenterConstraints(view: UIView?){
+    fileprivate func addViewAndCenterConstraints(_ view: UIView?){
         
         guard let view = view else { return }
         
@@ -157,13 +157,13 @@ extension StatusProvider{
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activateConstraints([
-            view.centerXAnchor.constraintEqualToAnchor(onView.centerXAnchor),
-            view.centerYAnchor.constraintEqualToAnchor(onView.centerYAnchor),
-            view.leadingAnchor.constraintGreaterThanOrEqualToAnchor(onView.leadingAnchor),
-            view.trailingAnchor.constraintLessThanOrEqualToAnchor(onView.trailingAnchor),
-            view.topAnchor.constraintGreaterThanOrEqualToAnchor(onView.topAnchor),
-            view.bottomAnchor.constraintLessThanOrEqualToAnchor(onView.bottomAnchor)
+        NSLayoutConstraint.activate([
+            view.centerXAnchor.constraint(equalTo: onView.centerXAnchor),
+            view.centerYAnchor.constraint(equalTo: onView.centerYAnchor),
+            view.leadingAnchor.constraint(greaterThanOrEqualTo: onView.leadingAnchor),
+            view.trailingAnchor.constraint(lessThanOrEqualTo: onView.trailingAnchor),
+            view.topAnchor.constraint(greaterThanOrEqualTo: onView.topAnchor),
+            view.bottomAnchor.constraint(lessThanOrEqualTo: onView.bottomAnchor)
         ])
     }
 }

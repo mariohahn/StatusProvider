@@ -50,6 +50,6 @@ class ActivityViewController: UIViewController {
         
         title = "Loading"
         
-        show(statusType: .Loading)
+        show(statusType: .loading)
     }
 }

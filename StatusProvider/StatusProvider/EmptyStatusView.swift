@@ -7,77 +7,77 @@
 import Foundation
 import UIKit
 
-public class EmptyStatusView: UIView, EmptyStatusDisplaying {
+open class EmptyStatusView: UIView, EmptyStatusDisplaying {
 	
-	public var action: (() -> Void)? {
+	open var action: (() -> Void)? {
 		didSet {
 			guard let _ = action else { return }
 			
-			emtyActionButton.hidden = false
+			emtyActionButton.isHidden = false
 		}
 	}
 	
 	let emtyActionButton: UIButton = {
-		$0.hidden = true
+		$0.isHidden = true
 		return $0
-	}(UIButton(type: .System))
+	}(UIButton(type: .system))
 	
-	public let emtyTitleLabel: UILabel = {
-		$0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-		$0.textColor = UIColor.blackColor()
-		$0.textAlignment = .Center
+	open let emtyTitleLabel: UILabel = {
+		$0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+		$0.textColor = UIColor.black
+		$0.textAlignment = .center
 		
 		return $0
 	}(UILabel())
 	
-	public let emtyDescriptionLabel: UILabel = {
-		$0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption2)
-		$0.textColor = UIColor.blackColor()
-		$0.textAlignment = .Center
+	open let emtyDescriptionLabel: UILabel = {
+		$0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
+		$0.textColor = UIColor.black
+		$0.textAlignment = .center
 		$0.numberOfLines = 0
 		
 		return $0
 	}(UILabel())
 	
-	public let emtyImageView: UIImageView = {
-		$0.contentMode = .Center
+	open let emtyImageView: UIImageView = {
+		$0.contentMode = .center
 		
 		return $0
 	}(UIImageView())
 	
 	let stackView: UIStackView = {
 		$0.translatesAutoresizingMaskIntoConstraints = false
-		$0.axis = .Vertical
+		$0.axis = .vertical
 		$0.spacing = 10
 		
 		return $0
 	}(UIStackView())
 	
 	public convenience init(title: String?, caption: String?, image: UIImage? = nil, actionTitle: String? = nil) {
-		self.init(frame: CGRectZero)
+		self.init(frame: CGRect.zero)
 		
-		emtyActionButton.addTarget(self, action: #selector(EmptyStatusView.emtyButtonAction), forControlEvents: .PrimaryActionTriggered)
+		emtyActionButton.addTarget(self, action: #selector(EmptyStatusView.emtyButtonAction), for: .primaryActionTriggered)
 		
-		if let title = title where title.characters.count > 0 {
+		if let title = title , title.characters.count > 0 {
 			emtyTitleLabel.text = title
 		} else {
-			emtyTitleLabel.hidden = true
+			emtyTitleLabel.isHidden = true
 		}
 		
-		if let caption = caption where caption.characters.count > 0 {
+		if let caption = caption , caption.characters.count > 0 {
 			emtyDescriptionLabel.text = caption
 		} else {
-			emtyDescriptionLabel.hidden = true
+			emtyDescriptionLabel.isHidden = true
 		}
 		
 		if let image = image {
 			emtyImageView.image = image
 		} else {
-			emtyImageView.hidden = true
+			emtyImageView.isHidden = true
 		}
 		
-		if let actionTitle = actionTitle where actionTitle.characters.count > 0 {
-			emtyActionButton.setTitle(actionTitle, forState: .Normal)
+		if let actionTitle = actionTitle , actionTitle.characters.count > 0 {
+			emtyActionButton.setTitle(actionTitle, for: UIControlState())
 		}
 	}
 	
@@ -95,15 +95,15 @@ public class EmptyStatusView: UIView, EmptyStatusDisplaying {
 		stackView.addArrangedSubview(emtyDescriptionLabel)
 		stackView.addArrangedSubview(emtyActionButton)
 		
-		NSLayoutConstraint.activateConstraints([
-			stackView.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
-			stackView.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
-			stackView.topAnchor.constraintEqualToAnchor(topAnchor),
-			stackView.bottomAnchor.constraintEqualToAnchor(bottomAnchor)
+		NSLayoutConstraint.activate([
+			stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			stackView.topAnchor.constraint(equalTo: topAnchor),
+			stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
 	}
 	
-	public override var tintColor: UIColor! {
+	open override var tintColor: UIColor! {
 		didSet {
 			emtyTitleLabel.textColor = tintColor
 			emtyDescriptionLabel.textColor = tintColor
