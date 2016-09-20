@@ -76,7 +76,7 @@ class MyCustomErrorView: UIView, ErrorStatusDisplaying {
 extension YourViewController: StatusProvider {
 
     var emptyView: UIView?{
-        return MyCustomEmtyView()
+        return MyCustomEmptyView()
     }
     
     var loadingView: UIView?{
