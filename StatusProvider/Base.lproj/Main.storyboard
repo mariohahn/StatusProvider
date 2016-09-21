@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YME-aI-JMe">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YME-aI-JMe">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Item-->
@@ -65,9 +66,9 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Activity" id="Vir-xg-Yyu"/>
                     <navigationItem key="navigationItem" id="u2m-Il-nMX"/>
@@ -83,7 +84,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Msr-o8-t5q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="BTn-ha-soa" kind="relationship" relationship="viewControllers" id="blL-85-RBu"/>
@@ -95,7 +96,7 @@
             </objects>
             <point key="canvasLocation" x="-1724" y="1271"/>
         </scene>
-        <!--Emty-->
+        <!--Empty-->
         <scene sceneID="Fua-CI-rEy">
             <objects>
                 <viewController id="Lc1-Fr-96H" customClass="EmptyViewController" customModule="StatusProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,11 +105,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Oaj-Uh-plo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hGP-Mw-UjN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Emty" id="E2L-SU-2ZM"/>
+                    <tabBarItem key="tabBarItem" title="Empty" id="E2L-SU-2ZM"/>
                     <navigationItem key="navigationItem" id="DTV-4p-VVr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9e-7b-Zfn" sceneMemberID="firstResponder"/>
@@ -124,9 +125,9 @@
                         <viewControllerLayoutGuide type="bottom" id="btq-3e-Jtj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xbl-sq-oOu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Error" id="AWy-dN-cRF"/>
                     <navigationItem key="navigationItem" id="f0a-EB-Cdn"/>

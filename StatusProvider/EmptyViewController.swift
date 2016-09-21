@@ -1,5 +1,5 @@
 //
-//  EmtyViewController.swift
+//  EmptyViewController.swift
 //  StatusProvider
 //
 //  Created by MarioHahn on 26/08/16.

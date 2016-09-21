@@ -13,7 +13,7 @@ public enum StatusProviderType {
     struct Constants {
         static let loadingTag   = 7023
         static let errorTag     = 7024
-        static let emtyTag      = 7025
+        static let emptyTag      = 7025
         static let noneTag      = 7026
     }
     
@@ -23,14 +23,14 @@ public enum StatusProviderType {
     case none
     
     static func allViewTags() -> [Int]{
-        return [ Constants.loadingTag,Constants.errorTag,Constants.emtyTag,Constants.noneTag]
+        return [ Constants.loadingTag,Constants.errorTag,Constants.emptyTag,Constants.noneTag]
     }
     
     func viewTag() -> Int{
         switch self {
         case .loading:    return  Constants.loadingTag
         case .error(_,_): return  Constants.errorTag
-        case .empty(_):    return  Constants.emtyTag
+        case .empty(_):    return  Constants.emptyTag
         case .none:       return  Constants.noneTag
         }
     }

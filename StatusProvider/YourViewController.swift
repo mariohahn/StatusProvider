@@ -9,7 +9,7 @@
 import UIKit
 import StatusProvider
 
-class MyCustomEmtyView: UIView { }
+class MyCustomEmptyView: UIView { }
 class MyCustomLoadingView: UIView { }
 class MyCustomErrorView: UIView, ErrorStatusDisplaying {
 
@@ -25,7 +25,7 @@ class MyCustomErrorView: UIView, ErrorStatusDisplaying {
 extension YourViewController: StatusProvider {
 
     var emptyView: UIView?{
-        return MyCustomEmtyView()
+        return MyCustomEmptyView()
     }
     
     var loadingView: UIView?{

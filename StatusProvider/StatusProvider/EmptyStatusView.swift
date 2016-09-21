@@ -13,16 +13,16 @@ open class EmptyStatusView: UIView, EmptyStatusDisplaying {
 		didSet {
 			guard let _ = action else { return }
 			
-			emtyActionButton.isHidden = false
+			emptyActionButton.isHidden = false
 		}
 	}
 	
-	let emtyActionButton: UIButton = {
+	let emptyActionButton: UIButton = {
 		$0.isHidden = true
 		return $0
 	}(UIButton(type: .system))
 	
-	open let emtyTitleLabel: UILabel = {
+	open let emptyTitleLabel: UILabel = {
 		$0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
 		$0.textColor = UIColor.black
 		$0.textAlignment = .center
@@ -30,7 +30,7 @@ open class EmptyStatusView: UIView, EmptyStatusDisplaying {
 		return $0
 	}(UILabel())
 	
-	open let emtyDescriptionLabel: UILabel = {
+	open let emptyDescriptionLabel: UILabel = {
 		$0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
 		$0.textColor = UIColor.black
 		$0.textAlignment = .center
@@ -39,7 +39,7 @@ open class EmptyStatusView: UIView, EmptyStatusDisplaying {
 		return $0
 	}(UILabel())
 	
-	open let emtyImageView: UIImageView = {
+	open let emptyImageView: UIImageView = {
 		$0.contentMode = .center
 		
 		return $0
@@ -56,32 +56,32 @@ open class EmptyStatusView: UIView, EmptyStatusDisplaying {
 	public convenience init(title: String?, caption: String?, image: UIImage? = nil, actionTitle: String? = nil) {
 		self.init(frame: CGRect.zero)
 		
-		emtyActionButton.addTarget(self, action: #selector(EmptyStatusView.emtyButtonAction), for: .primaryActionTriggered)
+		emptyActionButton.addTarget(self, action: #selector(EmptyStatusView.emptyButtonAction), for: .primaryActionTriggered)
 		
 		if let title = title , title.characters.count > 0 {
-			emtyTitleLabel.text = title
+			emptyTitleLabel.text = title
 		} else {
-			emtyTitleLabel.isHidden = true
+			emptyTitleLabel.isHidden = true
 		}
 		
 		if let caption = caption , caption.characters.count > 0 {
-			emtyDescriptionLabel.text = caption
+			emptyDescriptionLabel.text = caption
 		} else {
-			emtyDescriptionLabel.isHidden = true
+			emptyDescriptionLabel.isHidden = true
 		}
 		
 		if let image = image {
-			emtyImageView.image = image
+			emptyImageView.image = image
 		} else {
-			emtyImageView.isHidden = true
+			emptyImageView.isHidden = true
 		}
 		
 		if let actionTitle = actionTitle , actionTitle.characters.count > 0 {
-			emtyActionButton.setTitle(actionTitle, for: UIControlState())
+			emptyActionButton.setTitle(actionTitle, for: UIControlState())
 		}
 	}
 	
-	func emtyButtonAction() {
+	func emptyButtonAction() {
 		action?()
 	}
 	
@@ -90,10 +90,10 @@ open class EmptyStatusView: UIView, EmptyStatusDisplaying {
 		
 		addSubview(stackView)
 		
-		stackView.addArrangedSubview(emtyImageView)
-		stackView.addArrangedSubview(emtyTitleLabel)
-		stackView.addArrangedSubview(emtyDescriptionLabel)
-		stackView.addArrangedSubview(emtyActionButton)
+		stackView.addArrangedSubview(emptyImageView)
+		stackView.addArrangedSubview(emptyTitleLabel)
+		stackView.addArrangedSubview(emptyDescriptionLabel)
+		stackView.addArrangedSubview(emptyActionButton)
 		
 		NSLayoutConstraint.activate([
 			stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -105,8 +105,8 @@ open class EmptyStatusView: UIView, EmptyStatusDisplaying {
 	
 	open override var tintColor: UIColor! {
 		didSet {
-			emtyTitleLabel.textColor = tintColor
-			emtyDescriptionLabel.textColor = tintColor
+			emptyTitleLabel.textColor = tintColor
+			emptyDescriptionLabel.textColor = tintColor
 		}
 	}
 	
