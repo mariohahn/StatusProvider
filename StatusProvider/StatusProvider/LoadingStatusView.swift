@@ -20,7 +20,7 @@ open class LoadingStatusView: UIView {
 	open let activityIndicatorView: UIActivityIndicatorView = {
 		$0.startAnimating()
 		#if os(tvOS)
-			$0.activityIndicatorViewStyle = .WhiteLarge
+			$0.activityIndicatorViewStyle = .whiteLarge
 		#elseif os(iOS)
 			$0.activityIndicatorViewStyle = .gray
 		#endif
