@@ -98,7 +98,7 @@ extension StatusProvider{
     public var loadingView: UIView? {
         get {
             #if os(tvOS)
-                return LoadingStatusView(loadingStyle: .Activity)
+                return LoadingStatusView(loadingStyle: .activity)
             #elseif os(iOS)
                 return LoadingStatusView(loadingStyle: .labelWithActivity)
             #else
