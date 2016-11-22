@@ -13,7 +13,7 @@ public enum StatusProviderType {
     struct Constants {
         static let loadingTag   = 7023
         static let errorTag     = 7024
-        static let emptyTag      = 7025
+        static let emptyTag     = 7025
         static let noneTag      = 7026
     }
     
@@ -54,7 +54,7 @@ public protocol StatusProvider: StatusOnViewProvider {
     
     var loadingView: UIView?                    { get }
     var errorView: ErrorStatusDisplaying?       { get }
-    var emptyView: EmptyStatusDisplaying?        { get }
+    var emptyView: EmptyStatusDisplaying?       { get }
 
     func show(statusType type: StatusProviderType)
     func hide(statusType type: StatusProviderType)
@@ -70,6 +70,9 @@ extension StatusOnViewProvider where Self: UIViewController {
 extension StatusOnViewProvider where Self: UITableViewController {
     
     public var onView: UIView {
+        if let backgroundView = tableView.backgroundView {
+            return backgroundView
+        }
         return view
     }
 }
