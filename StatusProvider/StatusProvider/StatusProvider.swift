@@ -7,12 +7,9 @@
 import Foundation
 import UIKit
 
-public enum StatusProviderType {
-    case loading
-    case status(Statusable)
-}
 
-public protocol Statusable {
+public protocol StatusModel {
+    var isLoading: Bool         { get }
     var title: String?          { get }
     var description: String?    { get }
     var actionTitle: String?    { get }
@@ -20,7 +17,12 @@ public protocol Statusable {
     var action: (() -> Void)?   { get }
 }
 
-extension Statusable {
+extension StatusModel {
+    
+    public var isLoading: Bool {
+        return false
+    }
+    
     public var title: String? {
         return nil
     }
@@ -40,81 +42,78 @@ extension Statusable {
     public var action: (() -> Void)? {
         return nil
     }
+
 }
 
-public struct Status: Statusable {
-    public var title: String?
-    public var description: String?
-    public var actionTitle: String?
-    public var image: UIImage?
-    public var action: (() -> Void)?
+public struct Status: StatusModel {
+    public let isLoading: Bool
+    public let title: String?
+    public let description: String?
+    public let actionTitle: String?
+    public let image: UIImage?
+    public let action: (() -> Void)?
     
-    public init(title: String? = nil, description: String? = nil, actionTitle: String? = nil, image: UIImage? = nil, action: (() -> Void)?) {
+    public init(isLoading: Bool = false, title: String? = nil, description: String? = nil, actionTitle: String? = nil, image: UIImage? = nil, action: (() -> Void)? = nil) {
+        self.isLoading = isLoading
         self.title = title
         self.description = description
         self.actionTitle = actionTitle
         self.image = image
-        self.action = action
+        self.action = action        
+    }
+    
+    public static var simpleLoading: Status {
+        return Status(isLoading: true)
     }
 }
 
-public protocol StatusDisplaying: class {
-    var status: Statusable?  { set get }
+public protocol StatusView: class {
+    var status: StatusModel?  { set get }
     var view: UIView { get }
 }
 
-public protocol StatusOnViewProvider {
+public protocol StatusController {
     var onView: StatusViewContainer { get }
+    var statusView: StatusView?           { get }
+
+    func show(status: StatusModel)
+    func hideStatus()
 }
 
-public protocol StatusProvider: StatusOnViewProvider {
-    
-    var loadingView: UIView?                    { get }
-    var statusView: StatusDisplaying?           { get }
-
-    func show(statusType type: StatusProviderType)
-}
-
-extension StatusProvider {
-    
-    public var loadingView: UIView? {
-        return LoadingView()
+extension StatusController {
+        
+    public var statusView: StatusView? {
+        return DefaultStatusView()
     }
     
-    public var statusView: StatusDisplaying? {
-        return StatusView()
+    public func hideStatus() {        
+        onView.statusView = nil
     }
     
-    public func show(statusType type: StatusProviderType) {
-        switch type {
-        case .loading:
-            onView.currentView = loadingView
-        case .status(let status):
-            guard let sv = statusView else {
-                fatalError("give me statusview oida")
-            }
-            
-            sv.status = status
-            onView.currentView = sv.view
+    public func show(status: StatusModel) {
+        guard let sv = statusView else {
+            fatalError("I need a Status View")
         }
+        sv.status = status
+        onView.statusView = sv.view
     }
 }
 
-extension StatusOnViewProvider where Self: UIView {
+extension StatusController where Self: UIView {
     
     public var onView: StatusViewContainer {
         return self
     }
 }
 
-extension StatusOnViewProvider where Self: UIViewController {
+extension StatusController where Self: UIViewController {
     
     public var onView: StatusViewContainer {
         return view
     }
 }
 
-extension StatusOnViewProvider where Self: UITableViewController {
+extension StatusController where Self: UITableViewController {
     
     public var onView: StatusViewContainer {
         if let backgroundView = tableView.backgroundView {
@@ -125,23 +124,22 @@ extension StatusOnViewProvider where Self: UITableViewController {
 }
 
 public protocol StatusViewContainer: class {
-    var currentView: UIView? { get set }
+    var statusView: UIView? { get set }
 }
 
 extension UIView: StatusViewContainer {
-    public static let CurrentViewTag = 666
+    public static let StatusViewTag = 666
     
-    public var currentView: UIView? {
+    public var statusView: UIView? {
         get {
-            return viewWithTag(UIView.CurrentViewTag)
+            return viewWithTag(UIView.StatusViewTag)
         }
         set {
-            viewWithTag(UIView.CurrentViewTag)?.removeFromSuperview()
+            viewWithTag(UIView.StatusViewTag)?.removeFromSuperview()
             
-            guard let view = newValue else {
-                return
-            }
+            guard let view = newValue else { return }
             
+            view.tag = UIView.StatusViewTag
             addSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([

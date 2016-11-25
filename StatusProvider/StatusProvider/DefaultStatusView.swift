@@ -1,0 +1,130 @@
+//
+//  EmptyStatusView
+//
+//  Created by MarioHahn on 25/08/16.
+//
+
+import Foundation
+import UIKit
+
+open class DefaultStatusView: UIView, StatusView {
+    
+    public var view: UIView {
+        return self
+    }
+    
+    public var status: StatusModel? {
+        didSet {
+            
+            guard let status = status else { return }
+            
+            imageView.image = status.image
+            titleLabel.text = status.title
+            descriptionLabel.text = status.description
+            actionButton.setTitle(status.actionTitle, for: UIControlState())
+            
+            if status.isLoading {
+                activityIndicatorView.startAnimating()
+            } else {
+                activityIndicatorView.stopAnimating()
+            }
+            
+            imageView.isHidden = imageView.image == nil
+            titleLabel.isHidden = titleLabel.text == nil
+            descriptionLabel.isHidden = descriptionLabel.text == nil
+            actionButton.isHidden = status.action == nil
+        }
+    }
+    
+    open let titleLabel: UILabel = {
+        $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+        $0.textColor = UIColor.black
+        $0.textAlignment = .center
+        
+        return $0
+    }(UILabel())
+    
+    open let descriptionLabel: UILabel = {
+        $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
+        $0.textColor = UIColor.black
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        
+        return $0
+    }(UILabel())
+    
+    open let activityIndicatorView: UIActivityIndicatorView = {
+        $0.isHidden = true
+        $0.hidesWhenStopped = true
+        
+        return $0
+    }(UIActivityIndicatorView(activityIndicatorStyle: .gray))
+    
+    open let imageView: UIImageView = {
+        $0.contentMode = .center
+        
+        return $0
+    }(UIImageView())
+    
+    let actionButton: UIButton = {
+        
+        return $0
+    }(UIButton(type: .system))
+	
+	let verticalStackView: UIStackView = {
+		$0.axis = .vertical
+		$0.spacing = 10
+        $0.alignment = .center
+
+		return $0
+	}(UIStackView())
+    
+    let horizontalStackView: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        $0.spacing = 10
+        $0.alignment = .center
+        
+        return $0
+    }(UIStackView())
+    
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+        
+        actionButton.addTarget(self, action: #selector(DefaultStatusView.actionButtonAction), for: .touchUpInside)
+		
+		addSubview(verticalStackView)
+        addSubview(horizontalStackView)
+        
+        horizontalStackView.addArrangedSubview(activityIndicatorView)
+        horizontalStackView.addArrangedSubview(verticalStackView)
+		
+		verticalStackView.addArrangedSubview(imageView)
+		verticalStackView.addArrangedSubview(titleLabel)
+		verticalStackView.addArrangedSubview(descriptionLabel)
+		verticalStackView.addArrangedSubview(actionButton)
+		
+		NSLayoutConstraint.activate([
+			horizontalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			horizontalStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			horizontalStackView.topAnchor.constraint(equalTo: topAnchor),
+			horizontalStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+		])
+	}
+    
+    func actionButtonAction() {
+        status?.action?()
+    }
+	
+	open override var tintColor: UIColor! {
+		didSet {
+			titleLabel.textColor = tintColor
+			descriptionLabel.textColor = tintColor
+		}
+	}
+	
+	required public init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+}

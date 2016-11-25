@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import StatusProvider
 
-extension EmptyViewController: StatusProvider {
+extension EmptyViewController: StatusController {
 
 }
 
@@ -24,10 +24,10 @@ class EmptyViewController: UIViewController {
         title = "Empty"
         
         let status = Status(title: "no Data", description: "No data available.💣", actionTitle: "Create ⭐️", image: UIImage(named: "placeholder_instagram")) {
-            print("action")
+            self.hideStatus()
         }    
         
-        show(statusType: .status(status))
+        show(status: status)        
     }
     
 }

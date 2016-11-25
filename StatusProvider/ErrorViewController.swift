@@ -10,12 +10,8 @@ import Foundation
 import UIKit
 import StatusProvider
 
-extension ErrorViewController: StatusProvider {
+extension ErrorViewController: StatusController {
     
-    var onView: UIView {
-        
-        return asdjasd
-    }
 }
 
 class ErrorViewController: UIViewController {
@@ -25,18 +21,12 @@ class ErrorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(asdjasd)
-        
-        NSLayoutConstraint.activate([
-            
-        ])
-        
         title = "Error"
         
         let status = Status(title: "Error", description: "Oh... fu**", actionTitle: "Retry 🚀") {
             
         }
         
-        show(statusType: .status(status))
+        show(status: status)        
     }
 }

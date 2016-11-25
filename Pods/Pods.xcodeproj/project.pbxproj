@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		127CE74A98BA561B747289C80B5A88D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		1ACBD86E8452F0569448783C7D652C8F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED848C12DF88246DB85839785EDA41 /* LoadingView.swift */; };
 		4CCF091F358557043E174A934E9C8D83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		5217FED08A74833B5F69005091F91B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		52498F2C8FAB33D32BD47149EC4F5940 /* StatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78487ECE746350ECED0FA9D255218C01 /* StatusProvider.swift */; };
@@ -17,7 +16,7 @@
 		5FB359FFB964AD3491A9B6CBC6E792D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		79A0394BB0B95220B7FE5A7053452CA7 /* Pods-StatusProviderUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A3F97BCD1787240A0E1F2A6906AD91 /* Pods-StatusProviderUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96C3221D3ADD11F5C595EBAD4C2581AA /* Pods-StatusProvider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D8605F1D9FF46271B80F904F64865FDA /* Pods-StatusProvider-dummy.m */; };
-		AEC34601CF17E0E30D8058A2BC46D1AD /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B29127244D5FADAF8CCBA1F7C5C7E /* StatusView.swift */; };
+		AEC34601CF17E0E30D8058A2BC46D1AD /* DefaultStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B29127244D5FADAF8CCBA1F7C5C7E /* DefaultStatusView.swift */; };
 		CDA8269966FA5FC77AC0501C79EA0077 /* Pods-StatusProviderUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8209E1EEEFDD93BE8137A11B436565 /* Pods-StatusProviderUITests-dummy.m */; };
 		DDC2D39227379FF3E90968E5ECF6E222 /* StatusProvider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C900C0073A9B86E8A9C933456353889 /* StatusProvider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E102F42B73C0EC4F8DF69C4B06C6648E /* StatusProvider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A7B48B548EB1C97F111B2C778E798 /* StatusProvider-dummy.m */; };
@@ -49,7 +48,7 @@
 		3763F08F1F8425C0F88F54A7650A713A /* Pods-StatusProviderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StatusProviderTests.release.xcconfig"; sourceTree = "<group>"; };
 		386F0B580A5B7326C050115522A82115 /* StatusProvider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = StatusProvider.modulemap; sourceTree = "<group>"; };
 		43774F94C0301CA4CF62808A20893B3E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		454B29127244D5FADAF8CCBA1F7C5C7E /* StatusView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		454B29127244D5FADAF8CCBA1F7C5C7E /* DefaultStatusView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefaultStatusView.swift; sourceTree = "<group>"; };
 		4D336F4FBCFBE2F6049949966F2CD5E9 /* Pods-StatusProviderUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StatusProviderUITests-resources.sh"; sourceTree = "<group>"; };
 		5352C85596D4E794B5C77059DC784A92 /* Pods-StatusProviderUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StatusProviderUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5612A68A368237C7AA2DEC9B20B5D18F /* Pods-StatusProvider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StatusProvider-umbrella.h"; sourceTree = "<group>"; };
@@ -57,7 +56,6 @@
 		58D5EA0441B92D2D14BB177BE0A3239E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F9370585D04D0F18061D38D171E9718 /* Pods-StatusProviderUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StatusProviderUITests-frameworks.sh"; sourceTree = "<group>"; };
 		6BF68968357CC9FC6816C18213FA1D70 /* Pods-StatusProvider-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StatusProvider-frameworks.sh"; sourceTree = "<group>"; };
-		71ED848C12DF88246DB85839785EDA41 /* LoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		742F6808C7912FC2ECAE86C8AEE19C5D /* Pods_StatusProviderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatusProviderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F33726A020714A8608FDA3BD01D9C1 /* Pods_StatusProviderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatusProviderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		771E12D93C854101B5AB63EB6CC3014A /* Pods-StatusProvider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StatusProvider.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,8 +127,7 @@
 		15BB50BC041B9F603A34B8D4E4026D80 /* StatusProvider */ = {
 			isa = PBXGroup;
 			children = (
-				454B29127244D5FADAF8CCBA1F7C5C7E /* StatusView.swift */,
-				71ED848C12DF88246DB85839785EDA41 /* LoadingView.swift */,
+				454B29127244D5FADAF8CCBA1F7C5C7E /* DefaultStatusView.swift */,
 				78487ECE746350ECED0FA9D255218C01 /* StatusProvider.swift */,
 			);
 			path = StatusProvider;
@@ -435,8 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEC34601CF17E0E30D8058A2BC46D1AD /* StatusView.swift in Sources */,
-				1ACBD86E8452F0569448783C7D652C8F /* LoadingView.swift in Sources */,
+				AEC34601CF17E0E30D8058A2BC46D1AD /* DefaultStatusView.swift in Sources */,
 				E102F42B73C0EC4F8DF69C4B06C6648E /* StatusProvider-dummy.m in Sources */,
 				52498F2C8FAB33D32BD47149EC4F5940 /* StatusProvider.swift in Sources */,
 			);

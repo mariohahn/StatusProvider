@@ -10,14 +10,8 @@ import Foundation
 import UIKit
 import StatusProvider
 
-extension ActivityViewController: StatusProvider {
+extension ActivityViewController: StatusController {
     
-    var loadingView: UIView? {
-        let view = LoadingView()
-        view.titleLabel.text = "Lädt…"
-        view.activityIndicatorView.activityIndicatorViewStyle = .gray
-        return view
-    }
 }
 
 class ActivityViewController: UIViewController {
@@ -27,7 +21,8 @@ class ActivityViewController: UIViewController {
         
         title = "Loading"
         
+        let status = Status(isLoading: true, description: "Lädt…")
         
-        show(statusType: .loading)
+        show(status: status)
     }
 }
