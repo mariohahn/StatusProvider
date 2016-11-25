@@ -56,9 +56,13 @@ open class DefaultStatusView: UIView, StatusView {
     open let activityIndicatorView: UIActivityIndicatorView = {
         $0.isHidden = true
         $0.hidesWhenStopped = true
-        
+        #if os(tvOS)
+            $0.activityIndicatorViewStyle = .whiteLarge
+        #elseif os(iOS)
+            $0.activityIndicatorViewStyle = .gray
+        #endif
         return $0
-    }(UIActivityIndicatorView(activityIndicatorStyle: .gray))
+    }(UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge))
     
     open let imageView: UIImageView = {
         $0.contentMode = .center
