@@ -10,13 +10,8 @@ import Foundation
 import UIKit
 import StatusProvider
 
-extension ErrorViewController: StatusController {
-    
-}
 
-class ErrorViewController: UIViewController {
-    
-    let asdjasd = UIView()
+class ErrorViewController: UIViewController, StatusController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

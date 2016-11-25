@@ -10,14 +10,9 @@ import Foundation
 import UIKit
 import StatusProvider
 
-extension EmptyViewController: StatusController {
 
-}
+class EmptyViewController: UIViewController, StatusController {
 
-class EmptyViewController: UIViewController {
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,5 +24,4 @@ class EmptyViewController: UIViewController {
         
         show(status: status)        
     }
-    
 }

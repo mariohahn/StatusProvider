@@ -10,11 +10,7 @@ import Foundation
 import UIKit
 import StatusProvider
 
-extension ActivityViewController: StatusController {
-    
-}
-
-class ActivityViewController: UIViewController {
+class ActivityViewController: UIViewController, StatusController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
