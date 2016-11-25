@@ -12,35 +12,12 @@ import StatusProvider
 
 extension ActivityViewController: StatusProvider {
     
-    //    LabelWithActivity
-    //
-    //    var loadingView: UIView?{
-    //        let activity = LoadingStatusView(loadingStyle: .LabelWithActivity)
-    //        return activity
-    //    }
-    
-    //    Label
-    //
-    //    var loadingView: UIView?{
-    //        let activity = LoadingStatusView(loadingStyle: .Label)
-    //        return activity
-    //    }
-    
-    //    Activity
-    //
-    //    var loadingView: UIView?{
-    //        let activity = LoadingStatusView(loadingStyle: .Activity)
-    //        return activity
-    //    }
-    
-    //    Change Color
-    //
-    //    var loadingView: UIView?{
-    //         let activity = LoadingStatusView(loadingStyle: .Activity)
-    //         activity.tintColor = UIColor.greenColor()
-    //         return activity
-    //    }
-    
+    var loadingView: UIView? {
+        let view = LoadingView()
+        view.titleLabel.text = "Lädt…"
+        view.activityIndicatorView.activityIndicatorViewStyle = .gray
+        return view
+    }
 }
 
 class ActivityViewController: UIViewController {
@@ -49,6 +26,7 @@ class ActivityViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Loading"
+        
         
         show(statusType: .loading)
     }

@@ -7,69 +7,116 @@
 import Foundation
 import UIKit
 
-
 public enum StatusProviderType {
-    
-    struct Constants {
-        static let loadingTag   = 7023
-        static let errorTag     = 7024
-        static let emptyTag     = 7025
-        static let noneTag      = 7026
-    }
-    
     case loading
-    case error(error: NSError?, retry: (()->Void)?)
-    case empty(action: (()->Void)?)
-    case none
-    
-    static func allViewTags() -> [Int]{
-        return [ Constants.loadingTag,Constants.errorTag,Constants.emptyTag,Constants.noneTag]
+    case status(Statusable)
+}
+
+public protocol Statusable {
+    var title: String?          { get }
+    var description: String?    { get }
+    var actionTitle: String?    { get }
+    var image: UIImage?         { get }
+    var action: (() -> Void)?   { get }
+}
+
+extension Statusable {
+    public var title: String? {
+        return nil
     }
     
-    func viewTag() -> Int{
-        switch self {
-        case .loading:    return  Constants.loadingTag
-        case .error(_,_): return  Constants.errorTag
-        case .empty(_):    return  Constants.emptyTag
-        case .none:       return  Constants.noneTag
-        }
+    public var description: String? {
+        return nil
+    }
+    
+    public var actionTitle: String? {
+        return nil
+    }
+    
+    public var image: UIImage? {
+        return nil
+    }
+    
+    public var action: (() -> Void)? {
+        return nil
     }
 }
 
-func == (lhs: StatusProviderType, rhs: StatusProviderType) -> Bool {
-    switch (lhs, rhs) {
-        case (.loading, .loading): return true
-        case (.empty(_), .empty(_)): return true
-        case (.none, .none): return true
-        case let (.error(error1, _), .error(error2, _)) where error1 == error2:  return true
-        default: return false
+public struct Status: Statusable {
+    public var title: String?
+    public var description: String?
+    public var actionTitle: String?
+    public var image: UIImage?
+    public var action: (() -> Void)?
+    
+    public init(title: String? = nil, description: String? = nil, actionTitle: String? = nil, image: UIImage? = nil, action: (() -> Void)?) {
+        self.title = title
+        self.description = description
+        self.actionTitle = actionTitle
+        self.image = image
+        self.action = action
     }
+}
+
+public protocol StatusDisplaying: class {
+    var status: Statusable?  { set get }
+    var view: UIView { get }
 }
 
 public protocol StatusOnViewProvider {
-    var onView: UIView { get }
+    var onView: StatusViewContainer { get }
 }
 
 public protocol StatusProvider: StatusOnViewProvider {
     
     var loadingView: UIView?                    { get }
-    var errorView: ErrorStatusDisplaying?       { get }
-    var emptyView: EmptyStatusDisplaying?       { get }
+    var statusView: StatusDisplaying?           { get }
 
     func show(statusType type: StatusProviderType)
-    func hide(statusType type: StatusProviderType)
+}
+
+extension StatusProvider {
+    
+    public var loadingView: UIView? {
+        return LoadingView()
+    }
+    
+    public var statusView: StatusDisplaying? {
+        return StatusView()
+    }
+    
+    public func show(statusType type: StatusProviderType) {
+        switch type {
+        case .loading:
+            onView.currentView = loadingView
+        case .status(let status):
+            guard let sv = statusView else {
+                fatalError("give me statusview oida")
+            }
+            
+            sv.status = status
+            onView.currentView = sv.view
+        }
+    }
+}
+
+extension StatusOnViewProvider where Self: UIView {
+    
+    public var onView: StatusViewContainer {
+        return self
+    }
 }
 
 extension StatusOnViewProvider where Self: UIViewController {
     
-    public var onView: UIView {
+    public var onView: StatusViewContainer {
         return view
     }
 }
 
 extension StatusOnViewProvider where Self: UITableViewController {
     
-    public var onView: UIView {
+    public var onView: StatusViewContainer {
         if let backgroundView = tableView.backgroundView {
             return backgroundView
         }
@@ -77,96 +124,34 @@ extension StatusOnViewProvider where Self: UITableViewController {
     }
 }
 
-extension StatusOnViewProvider where Self: UIView {
-    
-    public var onView: UIView {
-        return self
-    }
+public protocol StatusViewContainer: class {
+    var currentView: UIView? { get set }
 }
 
-public protocol EmptyStatusDisplaying: class {
+extension UIView: StatusViewContainer {
+    public static let CurrentViewTag = 666
     
-    var action: (()->Void)?         { set get }
-}
-
-public protocol ErrorStatusDisplaying: class {
-    
-    var error: NSError?             { set get }
-    var retry: (()->Void)?          { set get }
-}
-
-extension StatusProvider{
-    
-    
-    public var loadingView: UIView? {
+    public var currentView: UIView? {
         get {
-            #if os(tvOS)
-                return LoadingStatusView(loadingStyle: .activity)
-            #elseif os(iOS)
-                return LoadingStatusView(loadingStyle: .labelWithActivity)
-            #else
-                return nil
-            #endif
+            return viewWithTag(UIView.CurrentViewTag)
         }
-    }
-    
-    public var errorView: ErrorStatusDisplaying? {
-        get { return ErrorStatusView() }
-    }
-    
-    public var emptyView: EmptyStatusDisplaying? {
-        get { return nil }
-    }
-    
-    public func hide(statusType type: StatusProviderType){
-        remove(viewTag: type.viewTag())
-    }
-    
-    func remove(viewTag tag: Int){
-        onView.viewWithTag(tag)?.removeFromSuperview()
-    }
-    
-    public func show(statusType type: StatusProviderType){
-        
-        StatusProviderType.allViewTags().forEach({ remove(viewTag: $0) })
-        
-        var statusView: UIView? = nil
-        
-        switch type {
-        case let .error(error,retry):
+        set {
+            viewWithTag(UIView.CurrentViewTag)?.removeFromSuperview()
             
-            statusView = errorView as? UIView
-            (statusView as? ErrorStatusDisplaying)?.error = error
-            (statusView as? ErrorStatusDisplaying)?.retry = retry
+            guard let view = newValue else {
+                return
+            }
             
-        case .loading: statusView = loadingView
-        case let .empty(action):
-            
-            statusView = emptyView as? UIView
-            (statusView as? EmptyStatusDisplaying)?.action = action
-            
-        case .none: break
+            addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                view.centerXAnchor.constraint(equalTo: centerXAnchor),
+                view.centerYAnchor.constraint(equalTo: centerYAnchor),
+                view.leadingAnchor.constraint(greaterThanOrEqualTo: readableContentGuide.leadingAnchor),
+                view.trailingAnchor.constraint(lessThanOrEqualTo: readableContentGuide.trailingAnchor),
+                view.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
+                view.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            ])
         }
-        
-        statusView?.tag = type.viewTag()
-        addViewAndCenterConstraints(statusView)
-    }
-    
-    fileprivate func addViewAndCenterConstraints(_ view: UIView?){
-        
-        guard let view = view else { return }
-        
-        onView.addSubview(view)
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            view.centerXAnchor.constraint(equalTo: onView.centerXAnchor),
-            view.centerYAnchor.constraint(equalTo: onView.centerYAnchor),
-            view.leadingAnchor.constraint(greaterThanOrEqualTo: onView.leadingAnchor),
-            view.trailingAnchor.constraint(lessThanOrEqualTo: onView.trailingAnchor),
-            view.topAnchor.constraint(greaterThanOrEqualTo: onView.topAnchor),
-            view.bottomAnchor.constraint(lessThanOrEqualTo: onView.bottomAnchor)
-        ])
     }
 }

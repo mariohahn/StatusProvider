@@ -11,23 +11,23 @@ import UIKit
 import StatusProvider
 
 extension EmptyViewController: StatusProvider {
-    
-    var emptyView: EmptyStatusDisplaying?{
-        return EmptyStatusView(title: "No Data", caption: "No data available.💣", image:  UIImage(named: "placeholder_instagram"), actionTitle: "Create ⭐️")
-    }
-    
+
 }
 
 class EmptyViewController: UIViewController {
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Empty"
         
-        show(statusType: StatusProviderType.empty(action: {
-            self.show(statusType: .loading)
-        }))
+        let status = Status(title: "no Data", description: "No data available.💣", actionTitle: "Create ⭐️", image: UIImage(named: "placeholder_instagram")) {
+            print("action")
+        }    
+        
+        show(statusType: .status(status))
     }
     
 }
