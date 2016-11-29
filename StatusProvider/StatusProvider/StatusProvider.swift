@@ -91,9 +91,7 @@ extension StatusController {
     }
     
     public func show(status: StatusModel) {
-        guard let sv = statusView else {
-            fatalError("I need a Status View")
-        }
+        guard let sv = statusView else { return }
         sv.status = status
         onView.statusContainerView = sv.view
     }
