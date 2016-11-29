@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 import StatusProvider
 
-
-class ErrorViewController: UIViewController, StatusController {
+class ErrorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,5 +22,12 @@ class ErrorViewController: UIViewController, StatusController {
         }
         
         show(status: status)        
+    }
+}
+
+extension ErrorViewController: StatusController {
+   
+    var statusView: StatusView? {
+        return DefaultStatusView()
     }
 }

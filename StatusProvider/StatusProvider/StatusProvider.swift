@@ -74,7 +74,7 @@ public protocol StatusView: class {
 
 public protocol StatusController {
     var onView: StatusViewContainer { get }
-    var statusView: StatusView?           { get }
+    var statusView: StatusView?     { get }
 
     func show(status: StatusModel)
     func hideStatus()
@@ -87,7 +87,7 @@ extension StatusController {
     }
     
     public func hideStatus() {        
-        onView.statusView = nil
+        onView.statusContainerView = nil
     }
     
     public func show(status: StatusModel) {
@@ -95,7 +95,7 @@ extension StatusController {
             fatalError("I need a Status View")
         }
         sv.status = status
-        onView.statusView = sv.view
+        onView.statusContainerView = sv.view
     }
 }
 
@@ -124,13 +124,13 @@ extension StatusController where Self: UITableViewController {
 }
 
 public protocol StatusViewContainer: class {
-    var statusView: UIView? { get set }
+    var statusContainerView: UIView? { get set }
 }
 
 extension UIView: StatusViewContainer {
     public static let StatusViewTag = 666
     
-    public var statusView: UIView? {
+    public var statusContainerView: UIView? {
         get {
             return viewWithTag(UIView.StatusViewTag)
         }

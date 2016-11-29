@@ -25,3 +25,15 @@ class EmptyViewController: UIViewController, StatusController {
         show(status: status)        
     }
 }
+
+class EmptyStatusTestView: UIView {
+    
+}
+
+extension EmptyStatusTestView: StatusController {
+    
+    var statusView: StatusView? {
+        return DefaultStatusView()
+    }
+    
+}
