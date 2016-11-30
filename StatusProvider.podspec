@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'StatusProvider'
-  s.version      = '1.2.2'
+  s.version      = '1.2.3'
   s.license      = 'MIT'
   s.homepage     = 'https://github.com/mariohahn/StatusProvider'
   s.author = {
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.source = {
     :git => 'https://github.com/mariohahn/StatusProvider.git',
-    :tag => 'v1.2.2'
+    :tag => 'v1.2.3'
   }
   s.source_files = 'StatusProvider/StatusProvider/*.{swift}'
   s.requires_arc = true

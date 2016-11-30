@@ -33,6 +33,8 @@ open class DefaultStatusView: UIView, StatusView {
             titleLabel.isHidden = titleLabel.text == nil
             descriptionLabel.isHidden = descriptionLabel.text == nil
             actionButton.isHidden = status.action == nil
+            
+            verticalStackView.isHidden = imageView.isHidden && descriptionLabel.isHidden && actionButton.isHidden
         }
     }
     
@@ -77,7 +79,7 @@ open class DefaultStatusView: UIView, StatusView {
         return $0
     }(UIButton(type: .system))
 	
-	let verticalStackView: UIStackView = {
+	open let verticalStackView: UIStackView = {
 		$0.axis = .vertical
 		$0.spacing = 10
         $0.alignment = .center
@@ -85,7 +87,7 @@ open class DefaultStatusView: UIView, StatusView {
 		return $0
 	}(UIStackView())
     
-    let horizontalStackView: UIStackView = {
+    open let horizontalStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
         $0.spacing = 10
@@ -99,7 +101,6 @@ open class DefaultStatusView: UIView, StatusView {
         
         actionButton.addTarget(self, action: #selector(DefaultStatusView.actionButtonAction), for: .touchUpInside)
 		
-		addSubview(verticalStackView)
         addSubview(horizontalStackView)
         
         horizontalStackView.addArrangedSubview(activityIndicatorView)

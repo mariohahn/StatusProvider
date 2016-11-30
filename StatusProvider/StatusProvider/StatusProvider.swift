@@ -128,7 +128,7 @@ public protocol StatusViewContainer: class {
 extension UIView: StatusViewContainer {
     public static let StatusViewTag = 666
     
-    public var statusContainerView: UIView? {
+    open var statusContainerView: UIView? {
         get {
             return viewWithTag(UIView.StatusViewTag)
         }
