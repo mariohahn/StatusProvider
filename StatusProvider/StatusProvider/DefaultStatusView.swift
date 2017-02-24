@@ -74,7 +74,7 @@ open class DefaultStatusView: UIView, StatusView {
         return $0
     }(UIImageView())
     
-    let actionButton: UIButton = {
+    open let actionButton: UIButton = {
         
         return $0
     }(UIButton(type: .system))
