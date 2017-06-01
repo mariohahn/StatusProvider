@@ -1,5 +1,7 @@
-# StatusProvider
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
+# StatusProvider
+
 ![Screenshot](https://github.com/mariohahn/StatusProvider/blob/master/Github%20Screenshots/StatusProvider.png?raw=true)
 
 Protocol to handle initial Loadings, Empty Views and Error Handling in a ViewController &amp; views
