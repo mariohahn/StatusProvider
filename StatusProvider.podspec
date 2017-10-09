@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.summary      = 'Protocol to handle initial Loadings, Emty Views and Error Handling in a ViewController & views'
   s.ios.deployment_target =     '9.0'
   s.tvos.deployment_target =    '9.0'
-  s.source           = { :git => 'https://github.com/mariohahn/StatusProvider.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/mariohahn/StatusProvider.git', :tag =>  "#{s.version}" }
   s.source_files = 'StatusProvider/StatusProvider/*.{swift}'
   s.requires_arc = true
 end
