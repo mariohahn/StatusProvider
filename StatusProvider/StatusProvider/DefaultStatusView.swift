@@ -39,7 +39,7 @@ open class DefaultStatusView: UIView, StatusView {
     }
     
     open let titleLabel: UILabel = {
-        $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+        $0.font = UIFont.preferredFont(forTextStyle: .headline)
         $0.textColor = UIColor.black
         $0.textAlignment = .center
         
@@ -47,7 +47,7 @@ open class DefaultStatusView: UIView, StatusView {
     }(UILabel())
     
     open let descriptionLabel: UILabel = {
-        $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption2)
+        $0.font = UIFont.preferredFont(forTextStyle: .caption2)
         $0.textColor = UIColor.black
         $0.textAlignment = .center
         $0.numberOfLines = 0
@@ -119,7 +119,7 @@ open class DefaultStatusView: UIView, StatusView {
 		])
 	}
     
-    func actionButtonAction() {
+    @objc func actionButtonAction() {
         status?.action?()
     }
 	
