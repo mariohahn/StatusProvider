@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import StatusProvider
 
-
 class EmptyViewController: UIViewController, StatusController {
 
     override func viewDidLoad() {
@@ -35,5 +34,4 @@ extension EmptyStatusTestView: StatusController {
     var statusView: StatusView? {
         return DefaultStatusView()
     }
-    
 }

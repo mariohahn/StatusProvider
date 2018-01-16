@@ -21,4 +21,5 @@ class ActivityViewController: UIViewController, StatusController {
         
         show(status: status)
     }
+
 }

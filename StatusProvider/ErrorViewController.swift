@@ -17,8 +17,10 @@ class ErrorViewController: UIViewController {
         
         title = "Error"
         
+        let simpleLoading = Status.simpleLoading
+        
         let status = Status(title: "Error", description: "Oh... fu**", actionTitle: "Retry 🚀") {
-            
+            self.show(status: simpleLoading)
         }
         
         show(status: status)        

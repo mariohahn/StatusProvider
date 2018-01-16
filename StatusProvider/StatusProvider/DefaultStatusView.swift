@@ -96,7 +96,7 @@ open class DefaultStatusView: UIView, StatusView {
         return $0
     }(UIStackView())
     
-	override init(frame: CGRect) {
+	public override init(frame: CGRect) {
 		super.init(frame: frame)
         
         actionButton.addTarget(self, action: #selector(DefaultStatusView.actionButtonAction), for: .touchUpInside)

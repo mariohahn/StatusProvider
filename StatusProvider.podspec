@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'StatusProvider'
-  s.version      = '1.2.6'
+  s.version      = '1.2.7'
   s.license      = 'MIT'
   s.homepage     = 'https://github.com/mariohahn/StatusProvider'
   s.author = {
