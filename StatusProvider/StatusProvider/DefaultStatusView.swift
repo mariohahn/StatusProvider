@@ -119,6 +119,12 @@ open class DefaultStatusView: UIView, StatusView {
 		])
 	}
     
+    #if os(tvOS)
+    override open var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [actionButton]
+    }
+    #endif
+    
     @objc func actionButtonAction() {
         status?.action?()
     }

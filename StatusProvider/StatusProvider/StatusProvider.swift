@@ -42,7 +42,7 @@ extension StatusModel {
     public var action: (() -> Void)? {
         return nil
     }
-
+    
 }
 
 public struct Status: StatusModel {
@@ -59,7 +59,7 @@ public struct Status: StatusModel {
         self.description = description
         self.actionTitle = actionTitle
         self.image = image
-        self.action = action        
+        self.action = action
     }
     
     public static var simpleLoading: Status {
@@ -75,22 +75,22 @@ public protocol StatusView: class {
 public protocol StatusController {
     var onView: StatusViewContainer { get }
     var statusView: StatusView?     { get }
-
+    
     func show(status: StatusModel)
     func hideStatus()
 }
 
 extension StatusController {
-        
+    
     public var statusView: StatusView? {
         return DefaultStatusView()
     }
     
-    public func hideStatus() {        
+    public func hideStatus() {
         onView.statusContainerView = nil
     }
     
-    public func show(status: StatusModel) {
+    fileprivate func _show(status: StatusModel) {
         guard let sv = statusView else { return }
         sv.status = status
         onView.statusContainerView = sv.view
@@ -102,12 +102,25 @@ extension StatusController where Self: UIView {
     public var onView: StatusViewContainer {
         return self
     }
+    
+    public func show(status: StatusModel) {
+        _show(status: status)
+    }
 }
 
 extension StatusController where Self: UIViewController {
     
     public var onView: StatusViewContainer {
         return view
+    }
+    
+    public func show(status: StatusModel) {
+        _show(status: status)
+        
+        #if os(tvOS)
+        setNeedsFocusUpdate()
+        updateFocusIfNeeded()
+        #endif
     }
 }
 
@@ -118,6 +131,15 @@ extension StatusController where Self: UITableViewController {
             return backgroundView
         }
         return view
+    }
+    
+    public func show(status: StatusModel) {
+        _show(status: status)
+        
+        #if os(tvOS)
+        setNeedsFocusUpdate()
+        updateFocusIfNeeded()
+        #endif
     }
 }
 
@@ -147,7 +169,7 @@ extension UIView: StatusViewContainer {
                 view.trailingAnchor.constraint(lessThanOrEqualTo: readableContentGuide.trailingAnchor),
                 view.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
                 view.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
-            ])
+                ])
         }
     }
 }
