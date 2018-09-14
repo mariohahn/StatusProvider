@@ -7,7 +7,6 @@
 import Foundation
 import UIKit
 
-
 public protocol StatusModel {
     var isLoading: Bool         { get }
     var title: String?          { get }

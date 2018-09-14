@@ -21,7 +21,11 @@ open class DefaultStatusView: UIView, StatusView {
             imageView.image = status.image
             titleLabel.text = status.title
             descriptionLabel.text = status.description
+            #if swift(>=4.2)
+            actionButton.setTitle(status.actionTitle, for: UIControl.State())
+            #else
             actionButton.setTitle(status.actionTitle, for: UIControlState())
+            #endif
             
             if status.isLoading {
                 activityIndicatorView.startAnimating()
@@ -38,7 +42,7 @@ open class DefaultStatusView: UIView, StatusView {
         }
     }
     
-    open let titleLabel: UILabel = {
+    public let titleLabel: UILabel = {
         $0.font = UIFont.preferredFont(forTextStyle: .headline)
         $0.textColor = UIColor.black
         $0.textAlignment = .center
@@ -46,7 +50,7 @@ open class DefaultStatusView: UIView, StatusView {
         return $0
     }(UILabel())
     
-    open let descriptionLabel: UILabel = {
+    public let descriptionLabel: UILabel = {
         $0.font = UIFont.preferredFont(forTextStyle: .caption2)
         $0.textColor = UIColor.black
         $0.textAlignment = .center
@@ -55,7 +59,20 @@ open class DefaultStatusView: UIView, StatusView {
         return $0
     }(UILabel())
     
-    open let activityIndicatorView: UIActivityIndicatorView = {
+    #if swift(>=4.2)
+    public let activityIndicatorView: UIActivityIndicatorView = {
+        $0.isHidden = true
+        $0.hidesWhenStopped = true
+        #if os(tvOS)
+        $0.activityIndicatorViewStyle = .whiteLarge
+        #endif
+        #if os(iOS)
+        $0.style = .gray
+        #endif
+        return $0
+    }(UIActivityIndicatorView(style: .whiteLarge))
+    #else
+    public let activityIndicatorView: UIActivityIndicatorView = {
         $0.isHidden = true
         $0.hidesWhenStopped = true
         #if os(tvOS)
@@ -67,19 +84,20 @@ open class DefaultStatusView: UIView, StatusView {
         #endif
         return $0
     }(UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge))
+    #endif
     
-    open let imageView: UIImageView = {
+    public let imageView: UIImageView = {
         $0.contentMode = .center
         
         return $0
     }(UIImageView())
     
-    open let actionButton: UIButton = {
+    public let actionButton: UIButton = {
         
         return $0
     }(UIButton(type: .system))
 	
-	open let verticalStackView: UIStackView = {
+    public let verticalStackView: UIStackView = {
 		$0.axis = .vertical
 		$0.spacing = 10
         $0.alignment = .center
@@ -87,7 +105,7 @@ open class DefaultStatusView: UIView, StatusView {
 		return $0
 	}(UIStackView())
     
-    open let horizontalStackView: UIStackView = {
+    public let horizontalStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
         $0.spacing = 10
