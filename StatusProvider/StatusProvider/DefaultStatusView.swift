@@ -64,7 +64,7 @@ open class DefaultStatusView: UIView, StatusView {
         $0.isHidden = true
         $0.hidesWhenStopped = true
         #if os(tvOS)
-        $0.activityIndicatorViewStyle = .whiteLarge
+        $0.style = .whiteLarge
         #endif
         #if os(iOS)
         $0.style = .gray
